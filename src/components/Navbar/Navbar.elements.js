@@ -1,30 +1,11 @@
 import styled from "styled-components";
 
-export const Container = styled.header`
-  width: 100%;
-  height: 7.8rem;
-  background-color: var(--base-color);
-`;
-
 export const Wrapper = styled.nav`
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-`;
-
-export const LogoContainer = styled.div`
-  display: flex;
-  align-items: center;
-  font-size: 3rem;
-  font-family: var(--font-family-title);
-  color: var(--text-color);
-  padding-left: 2.4rem;
-
-  &:hover {
-    cursor: pointer;
-  }
 `;
 
 export const Menu = styled.ul`

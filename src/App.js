@@ -1,12 +1,12 @@
 import { Container } from "./stylesheet/App.elements";
-import Navbar from "./components/Navbar/Navbar";
-import TextTest from "./components/Text/TextTest";
+import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
+import Header from "./components/Header/Header";
 
 function App() {
   return (
     <Container>
-      <Navbar />
-      <TextTest text="Welcome to Hebras Store!" />
+      <Header />
+      <ItemListContainer text="Hello World!" />
     </Container>
   );
 }
