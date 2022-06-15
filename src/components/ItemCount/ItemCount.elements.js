@@ -8,12 +8,6 @@ export const ItemCountContainer = styled.div`
 export const TextContainer = styled.div`
   width: 100%;
   text-align: center;
-
-  p {
-    font-size: 2rem;
-    font-weight: bold;
-    margin: 1em;
-  }
 `;
 
 export const CountContainer = styled.div`
@@ -36,6 +30,7 @@ export const ItemCountButton = styled.button`
 export const Count = styled.p`
   font-size: 4rem;
   font-weight: bold;
+  margin: .4em;
 `;
 
 export const AddToCartButton = styled.button`

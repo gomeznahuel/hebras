@@ -17,7 +17,7 @@ const ItemCount = ({ stock, initialCount, onAdd }) => {
     }
 
     subtract() {
-      if (this.count >= 1) {
+      if (this.count >= initialCount) {
         this.count--;
         setCount(this.count);
       }
@@ -29,7 +29,7 @@ const ItemCount = ({ stock, initialCount, onAdd }) => {
   return (
     <ItemCountContainer>
       <TextContainer>
-        <p>Matcha</p>
+        <Count>Matcha</Count>
       </TextContainer>
       <CountContainer>
         <ItemCountButton onClick={() => counter.subtract()}>-</ItemCountButton>
