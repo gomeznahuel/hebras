@@ -11,15 +11,13 @@ const ItemCount = ({ stock, initialCount, onAdd }) => {
 
     add() {
       if (this.count < stock) {
-        this.count++;
-        setCount(this.count);
+        setCount(this.count + 1);
       }
     }
 
     subtract() {
       if (this.count >= initialCount) {
-        this.count--;
-        setCount(this.count);
+        setCount(this.count - 1);
       }
     }
   }
@@ -32,11 +30,11 @@ const ItemCount = ({ stock, initialCount, onAdd }) => {
         <Count>Matcha</Count>
       </TextContainer>
       <CountContainer>
-        <ItemCountButton onClick={() => counter.subtract()}>-</ItemCountButton>
+        <ItemCountButton onClick={() => counter.subtract()} disabled={count < initialCount}>-</ItemCountButton>
         <Count>{count}</Count>
-        <ItemCountButton onClick={() => counter.add()}>+</ItemCountButton>
+        <ItemCountButton onClick={() => counter.add()} disabled={count === stock}>+</ItemCountButton>
       </CountContainer>
-      <AddToCartButton onClick={() => onAdd(count)} disabled={count === 0}>
+      <AddToCartButton onClick={() => onAdd(count)} disabled={count === 0} > 
         Add to cart
       </AddToCartButton>
     </ItemCountContainer>

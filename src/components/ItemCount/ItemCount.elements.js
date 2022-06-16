@@ -25,6 +25,11 @@ export const ItemCountButton = styled.button`
   padding: 1em;
   font-size: 2em;
   font-weight: bold;
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
 `;
 
 export const Count = styled.p`
