@@ -1,3 +1,4 @@
+import ItemCount from "../ItemCount/ItemCount";
 import { Wrapper } from "./ItemListContainer.elements";
 // import { hebrasApi } from "../../data/api";
 // import { useEffect, useState } from "react";
@@ -27,11 +28,19 @@ const ItemListContainer = ({ greeting }) => {
   }, []);
   */
 
+  const onAdd = (count) => {
+    alert(`Added ${count} matcha to cart`);
+  };
+
   return (
-    <Wrapper>
-      {/* {loading ? <div>Loading...</div> : <ItemList items={items} />} */}
-      {greeting}
-    </Wrapper>
+    <>
+      <Wrapper>
+        {/* {loading ? <div>Loading...</div> : <ItemList items={items} />} */}
+        {greeting}
+      </Wrapper>
+
+      <ItemCount stock={5} initialCount={1} onAdd={onAdd} />
+    </>
   );
 };
 
