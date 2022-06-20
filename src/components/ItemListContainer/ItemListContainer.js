@@ -1,12 +1,13 @@
 import { Wrapper } from "./ItemListContainer.elements";
-import { hebrasApi } from "../../data/api";
-import { useEffect, useState } from "react";
-import ItemList from "../ItemList/ItemList";
+// import { hebrasApi } from "../../data/api";
+// import { useEffect, useState } from "react";
+// import ItemList from "../ItemList/ItemList";
 
 const ItemListContainer = ({ greeting }) => {
-  const [items, setItems] = useState([]);
-  const [loading, setLoading] = useState(true);
+  // const [items, setItems] = useState([]);
+  // const [loading, setLoading] = useState(true);
 
+  /*
   useEffect(() => {
     new Promise((resolve, reject) => {
       setTimeout(() => {
@@ -24,6 +25,7 @@ const ItemListContainer = ({ greeting }) => {
         setLoading(false);
       });
   }, []);
+  */
 
   return (
     <Wrapper>
