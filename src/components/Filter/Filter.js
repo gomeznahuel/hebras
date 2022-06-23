@@ -1,48 +1,16 @@
 import { RiArrowDownSLine } from "react-icons/ri";
-import {
-  FilterContainer,
-  Navigation,
-  NavigationSpan,
-  NavigationContent,
-  NavLink,
-  CategoryFilter,
-  CategoryFilterUL,
-  CategoryFilterLI,
-  CategoryFilterLink,
-} from "./Filter.elements";
+import { FilterContainer, Navigation, NavigationSpan, NavigationContent, NavLink, CategoryFilter, CategoryFilterUL, CategoryFilterLI, CategoryFilterLink } from "./Filter.elements";
+import { categoryNav } from "../../services/Data";
 
 const Filter = () => {
-  const linksArray = [
-    {
-      name: "All",
-      path: "/",
-    },
-    {
-      name: "Black Tea",
-      path: "/black-tea",
-    },
-    {
-      name: "Green Tea",
-      path: "/green-tea",
-    },
-    {
-      name: "Oolong Tea",
-      path: "/oolong-tea",
-    },
-    {
-      name: "White Tea",
-      path: "/white-tea",
-    },
-  ];
-
   return (
     <FilterContainer>
       <CategoryFilter>
         <CategoryFilterUL>
-          {linksArray.map((link) => (
-            <CategoryFilterLI key={link.name}>
-              <CategoryFilterLink href={link.path}>
-                {link.name}
+          {categoryNav.map(({ name, path }, index) => (
+            <CategoryFilterLI key={name}>
+              <CategoryFilterLink href={path}>
+                {name}
               </CategoryFilterLink>
             </CategoryFilterLI>
           ))}

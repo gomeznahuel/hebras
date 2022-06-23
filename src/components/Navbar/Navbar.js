@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Wrapper, Menu, MenuItem, MenuItemLink, MenuItemCart, MenuItemCartWrapper, MobileIcon } from "./Navbar.elements";
 import { VscThreeBars, VscClose } from "react-icons/vsc";
+import { menuNavigation } from "../../services/Data";
 import CartWidget from "../CartWidget/CartWidget";
 import Logo from "../Logo/Logo";
 
@@ -16,26 +17,12 @@ const Navbar = () => {
       </MobileIcon>
 
       <Menu open={showMobileMenu}>
-        <MenuItem>
-          <MenuItemLink onClick={() => setShowMobileMenu(!showMobileMenu)}>
-            /Home
-          </MenuItemLink>
-        </MenuItem>
-        <MenuItem>
-          <MenuItemLink onClick={() => setShowMobileMenu(!showMobileMenu)}>
-            /Products
-          </MenuItemLink>
-        </MenuItem>
-        <MenuItem>
-          <MenuItemLink onClick={() => setShowMobileMenu(!showMobileMenu)}>
-            /About Us
-          </MenuItemLink>
-        </MenuItem>
-        <MenuItem>
-          <MenuItemLink onClick={() => setShowMobileMenu(!showMobileMenu)}>
-            /Contact
-          </MenuItemLink>
-        </MenuItem>
+        {menuNavigation.map(({ name, link, index }) => (
+          <MenuItem key={index}>
+            <MenuItemLink to={link}>{name}</MenuItemLink>
+          </MenuItem>
+        ))}
+
         <MenuItemCartWrapper>
           <MenuItemCart onClick={() => setShowMobileMenu(!showMobileMenu)}>
             <CartWidget />

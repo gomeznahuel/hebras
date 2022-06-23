@@ -84,8 +84,6 @@ export const MenuItemCart = styled.a`
 
   &:hover {
     transition: 0.5s all ease;
-    /* color: var(--base-color);
-    background-color: var(--text-color-background); */
     transform: scale(1.4);
   }
 `;
