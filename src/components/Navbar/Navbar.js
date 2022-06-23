@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Wrapper, Menu, MenuItem, MenuItemLink, MobileIcon } from "./Navbar.elements";
+import { Wrapper, Menu, MenuItem, MenuItemLink, MenuItemCart, MenuItemCartWrapper, MobileIcon } from "./Navbar.elements";
 import { VscThreeBars, VscClose } from "react-icons/vsc";
 import CartWidget from "../CartWidget/CartWidget";
 import Logo from "../Logo/Logo";
@@ -36,11 +36,11 @@ const Navbar = () => {
             /Contact
           </MenuItemLink>
         </MenuItem>
-        <MenuItem>
-          <MenuItemLink onClick={() => setShowMobileMenu(!showMobileMenu)}>
+        <MenuItemCartWrapper>
+          <MenuItemCart onClick={() => setShowMobileMenu(!showMobileMenu)}>
             <CartWidget />
-          </MenuItemLink>
-        </MenuItem>
+          </MenuItemCart>
+        </MenuItemCartWrapper>
       </Menu>
     </Wrapper>
   );

@@ -1,15 +1,17 @@
-import { ItemIMG } from "./Item.elements";
+import { ItemContainer, ItemIMG } from "./Item.elements";
 import Button from "../Button/Button";
 
-const Item = ({ item }) => {
+const Item = ({ product }) => {
+  const { title, price, image, description } = product;
+  
   return (
-    <div className="item">
-      <h1>{item.title}</h1>
-      <ItemIMG src={item.image} alt={item.name} />
-      <p>{item.description}</p>
-      <p>{item.price}</p>
+    <ItemContainer>
+      <h1>{title}</h1>
+      <ItemIMG src={image} alt={title} />
+      <p>{description}</p>
+      <p>{price}</p>
       <Button textButton="Add to cart" />
-    </div>
+    </ItemContainer>
   );
 };
 

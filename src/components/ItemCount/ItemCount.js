@@ -10,15 +10,11 @@ const ItemCount = ({ stock, initialCount, onAdd }) => {
     }
 
     add() {
-      if (this.count < stock) {
-        setCount(this.count + 1);
-      }
+      setCount(this.count + 1);
     }
 
     subtract() {
-      if (this.count >= initialCount) {
-        setCount(this.count - 1);
-      }
+      setCount(this.count - 1);
     }
   }
 
@@ -34,7 +30,7 @@ const ItemCount = ({ stock, initialCount, onAdd }) => {
         <Count>{count}</Count>
         <ItemCountButton onClick={() => counter.add()} disabled={count === stock}>+</ItemCountButton>
       </CountContainer>
-      <AddToCartButton onClick={() => onAdd(count)} disabled={count === 0} > 
+      <AddToCartButton onClick={() => onAdd(count)} disabled={count < initialCount}>
         Add to cart
       </AddToCartButton>
     </ItemCountContainer>

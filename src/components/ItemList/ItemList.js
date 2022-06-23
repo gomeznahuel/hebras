@@ -1,13 +1,13 @@
-import { ItemListContainer } from "./ItemList.elements";
+import { ItemListWrapper } from "./ItemList.elements";
 import Item from "../Item/Item";
 
-const ItemList = ({ items }) => {
+const ItemList = ({ products }) => {
   return (
-    <ItemListContainer>
-      {items.map((item) => (
-        <Item key={item.id} item={item} />
+    <ItemListWrapper>
+      {products.map((product) => (
+        <Item key={product.id} product={product} />
       ))}
-    </ItemListContainer>
+    </ItemListWrapper>
   );
 };
 

@@ -12,6 +12,7 @@ export const Menu = styled.ul`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index: 2;
 
   @media screen and (max-width: 960px) {
     background-color: var(--base-color);
@@ -36,6 +37,16 @@ export const MenuItem = styled.li`
   }
 `;
 
+export const MenuItemCartWrapper = styled.li`
+  height: 100%;
+  padding: 0;
+
+  @media screen and (max-width: 960px) {
+    width: 100%;
+    height: 7rem;
+  }
+`;
+
 export const MenuItemLink = styled.a`
   display: flex;
   justify-content: center;
@@ -52,6 +63,30 @@ export const MenuItemLink = styled.a`
     color: var(--base-color);
     background-color: var(--text-color-background);
     transition: 0.5s all ease;
+  }
+`;
+
+export const MenuItemCart = styled.a`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-size: 1.8rem;
+  transition: 0.5s all ease;
+  font-family: var(--font-family-body);
+  color: var(--text-color);
+  cursor: pointer;
+  margin-left: 1em;
+
+  @media screen and (max-width: 960px) {
+    margin-left: 0;
+  }
+
+  &:hover {
+    transition: 0.5s all ease;
+    /* color: var(--base-color);
+    background-color: var(--text-color-background); */
+    transform: scale(1.4);
   }
 `;
 

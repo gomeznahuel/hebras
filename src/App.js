@@ -6,7 +6,7 @@ function App() {
   return (
     <Container>
       <Header />
-      <ItemListContainer greeting="This greeting is coming from App.js" />
+      <ItemListContainer />
     </Container>
   );
 }

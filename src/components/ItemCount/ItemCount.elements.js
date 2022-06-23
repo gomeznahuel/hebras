@@ -35,7 +35,7 @@ export const ItemCountButton = styled.button`
 export const Count = styled.p`
   font-size: 4rem;
   font-weight: bold;
-  margin: .4em;
+  margin: 0.4em;
 `;
 
 export const AddToCartButton = styled.button`
