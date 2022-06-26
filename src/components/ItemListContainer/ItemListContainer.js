@@ -7,13 +7,26 @@ import Loader from "../../services/Loader";
 // Toastify
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ItemCount from "../ItemCount/ItemCount";
 
 // Custom ID for Toast
 const customId = "custom-id-yes";
 
+// ItemListContainer component
 const ItemListContainer = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  // onAdd function for ItemCount
+  const onAdd = (count) => {
+    toast.success(`Added ${count} matcha to cart!`, {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeButton: false,
+      toastId: customId,
+    });
+  };
 
   // Notify user when getProducts() is wrong.
   const notify = (message) =>
@@ -23,6 +36,7 @@ const ItemListContainer = () => {
       autoClose: "3000",
     });
 
+  // Get products from API
   useEffect(() => {
     setTimeout(() => {
       const getProducts = async () => {
@@ -44,11 +58,16 @@ const ItemListContainer = () => {
   return (
     <>
       <Wrapper>
-        {loading && <Loader />}
-        {!loading && ( <><Filter /><ItemList products={products} /></>)}
+        {loading ? ( <Loader /> ) : (
+          <>
+            <Filter />
+            <ItemList products={products} />
+          </>
+        )}
       </Wrapper>
-      
+
       <ToastContainer style={{ fontSize: "1.2rem", fontWeight: "bold" }} />
+      <ItemCount stock={5} initialCount={1} onAdd={onAdd} />
     </>
   );
 };

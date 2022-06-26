@@ -1,24 +1,9 @@
-import { useState } from "react";
 import { ItemCountContainer, TextContainer, CountContainer, ItemCountButton, AddToCartButton, Count } from "./ItemCount.elements.js";
+import useCounter from "../../hooks/useCounter.js";
 
 const ItemCount = ({ stock, initialCount, onAdd }) => {
-  const [count, setCount] = useState(initialCount);
 
-  class Counter {
-    constructor(count) {
-      this.count = count;
-    }
-
-    add() {
-      setCount(this.count + 1);
-    }
-
-    subtract() {
-      setCount(this.count - 1);
-    }
-  }
-
-  const counter = new Counter(count);
+  const { count, counter } = useCounter(initialCount);
 
   return (
     <ItemCountContainer>
