@@ -1,7 +1,7 @@
 import { Wrapper, ImageContainer, IDContainer } from "./ItemDetail.elements";
 
 const ItemDetail = ({ product }) => {
-  const { title, price, description, image, stock } = product;
+  const { title, price, description, image, category } = product;
   return (
     <Wrapper>
       <ImageContainer>
@@ -13,7 +13,7 @@ const ItemDetail = ({ product }) => {
           <h1>{title}</h1>
           <p>{price}</p>
           <p>{description}</p>
-          <p>Stock: {stock}</p>
+          <p>Category: {category}</p>
         </div>
 
         <div>

@@ -17,7 +17,7 @@ const Navbar = () => {
       </MobileIcon>
 
       <Menu open={showMobileMenu}>
-        {menuNavigation.map(({ name, link, index }) => (
+        {menuNavigation.map(({ name, link }, index) => (
           <MenuItem key={index}>
             <MenuItemLink to={link}>{name}</MenuItemLink>
           </MenuItem>

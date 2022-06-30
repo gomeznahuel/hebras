@@ -1,7 +1,7 @@
 import { Container } from "./stylesheet/App.elements";
-// import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
 import Header from "./components/Header/Header";
-import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
+// import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
+import ItemDetailContainer from "./containers/ItemDetailContainer/ItemDetailContainer";
 
 function App() {
   return (
