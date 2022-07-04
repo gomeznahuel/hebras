@@ -25,11 +25,15 @@ export const CategoryFilterUL = styled.ul`
 
 export const CategoryFilterLI = styled.li`
   text-align: center;
-`;
 
-export const CategoryFilterLink = styled.a`
-  text-decoration: none;
-  color: var(--text-color);
+  :first-letter {
+    text-transform: uppercase;
+  }
+
+  a {
+    text-decoration: none;
+    color: var(--text-color);
+  }
 `;
 
 export const NavigationSpan = styled.span`
@@ -47,20 +51,20 @@ export const NavigationContent = styled.div`
   display: none;
   position: absolute;
   right: 0;
-  min-width: 10.8em;
+  min-width: 12em;
   width: fit-content;
   padding: 1.2rem 1.6rem;
   border-radius: 4px;
   z-index: 1;
-`;
 
-export const NavLink = styled.a`
-  color: black;
+  a {
+    color: black;
 
-  &:hover {
-    border-left: 2px solid var(--text-color);
-    padding-left: 0.5rem;
-    margin-left: 0.5rem;
+    &:hover {
+      border-left: 2px solid var(--text-color);
+      padding-left: 0.5rem;
+      /* margin-left: 0.5rem; */
+    }
   }
 `;
 
@@ -79,7 +83,7 @@ export const Navigation = styled.div`
       justify-content: flex-start;
       align-items: flex-start;
 
-      & ${NavLink} {
+      & ${NavigationContent} {
         font-weight: 400;
         font-size: 1.4rem;
         line-height: 2.2rem;

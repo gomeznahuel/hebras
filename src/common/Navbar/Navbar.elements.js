@@ -31,23 +31,7 @@ export const Menu = styled.ul`
 export const MenuItem = styled.li`
   height: 100%;
 
-  @media screen and (max-width: 960px) {
-    width: 100%;
-    height: 7rem;
-  }
-`;
-
-export const MenuItemCartWrapper = styled.li`
-  height: 100%;
-  padding: 0;
-
-  @media screen and (max-width: 960px) {
-    width: 100%;
-    height: 7rem;
-  }
-`;
-
-export const MenuItemLink = styled.a`
+  a {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -63,6 +47,22 @@ export const MenuItemLink = styled.a`
     color: var(--base-color);
     background-color: var(--text-color-background);
     transition: 0.5s all ease;
+  }
+  }
+
+  @media screen and (max-width: 960px) {
+    width: 100%;
+    height: 7rem;
+  }
+`;
+
+export const MenuItemCartWrapper = styled.li`
+  height: 100%;
+  padding: 0;
+
+  @media screen and (max-width: 960px) {
+    width: 100%;
+    height: 7rem;
   }
 `;
 

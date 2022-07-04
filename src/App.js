@@ -1,14 +1,15 @@
 import { Container } from "./stylesheet/App.elements";
-import Header from "./components/Header/Header";
-// import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
-import ItemDetailContainer from "./containers/ItemDetailContainer/ItemDetailContainer";
+import { BrowserRouter } from "react-router-dom";
+import { AppRouter } from "./Router";
+import Header from "./common/Header/Header";
 
 function App() {
   return (
     <Container>
-      <Header />
-      {/* <ItemListContainer /> */}
-      <ItemDetailContainer />
+      <BrowserRouter>
+        <Header />
+        <AppRouter />
+      </BrowserRouter>
     </Container>
   );
 }

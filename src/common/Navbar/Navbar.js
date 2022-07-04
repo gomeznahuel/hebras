@@ -1,25 +1,27 @@
 import { useState } from "react";
-import { Wrapper, Menu, MenuItem, MenuItemLink, MenuItemCart, MenuItemCartWrapper, MobileIcon } from "./Navbar.elements";
+import { Wrapper, Menu, MenuItem, MenuItemCart, MenuItemCartWrapper, MobileIcon } from "./Navbar.elements";
 import { VscThreeBars, VscClose } from "react-icons/vsc";
 import { menuNavigation } from "../../services/Data";
-import CartWidget from "../CartWidget/CartWidget";
-import Logo from "../Logo/Logo";
+import { NavLink } from "react-router-dom";
+import CartWidget from "../../components/CartWidget/CartWidget";
+import Logo from "../../components/Logo/Logo";
 
 const Navbar = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
 
   return (
     <Wrapper>
-      <Logo showMobileMenu={showMobileMenu} setShowMobileMenu={setShowMobileMenu} />
-
+      <NavLink to="/">
+        <Logo showMobileMenu={showMobileMenu} setShowMobileMenu={setShowMobileMenu} />
+      </NavLink>
       <MobileIcon onClick={() => setShowMobileMenu(!showMobileMenu)}>
         {showMobileMenu ? <VscClose /> : <VscThreeBars />}
       </MobileIcon>
 
       <Menu open={showMobileMenu}>
         {menuNavigation.map(({ name, link }, index) => (
-          <MenuItem key={index}>
-            <MenuItemLink to={link}>{name}</MenuItemLink>
+          <MenuItem key={index} onClick={() => setShowMobileMenu(false)}>
+            <NavLink to={link}>{name}</NavLink>
           </MenuItem>
         ))}
 

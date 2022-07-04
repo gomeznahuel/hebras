@@ -2,12 +2,7 @@ import styled from "styled-components";
 
 export const ItemCountContainer = styled.div`
   width: 30em;
-  margin: 0 auto;
-`;
-
-export const TextContainer = styled.div`
-  width: 100%;
-  text-align: center;
+  /* margin: 0 auto; */
 `;
 
 export const CountContainer = styled.div`
@@ -36,6 +31,7 @@ export const Count = styled.p`
   font-size: 4rem;
   font-weight: bold;
   margin: 0.4em;
+  text-align: center;
 `;
 
 export const AddToCartButton = styled.button`

@@ -5,6 +5,7 @@ import Loader from "../../services/Loader";
 import { ToastContainer, toast } from "react-toastify";
 import ItemDetail from "../../components/ItemDetail/ItemDetail";
 import "react-toastify/dist/ReactToastify.css";
+import { useParams } from "react-router-dom";
 
 // Custom ID for Toast
 const customId = "custom-id-yes";
@@ -22,20 +23,22 @@ const ItemDetailContainer = () => {
       autoClose: "3000",
     });
 
+  const { productId } = useParams();
+
   // Get only one product from API
   useEffect(() => {
     const getProduct = async () => {
       try {
-        const response = await fetch("https://fakestoreapi.com/products/1");
+        const response = await fetch(`https://fakestoreapi.com/products/${productId}`); 
         const data = await response.json();
         setProduct(data);
         setLoading(false);
       } catch (error) {
-        notify(`Something went wrong: ${error}`);
+        notify(error.message);
       }
     };
     getProduct();
-  }, []);
+  }, [productId]);
 
   return (
     <div>
