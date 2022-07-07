@@ -11,20 +11,32 @@ export const GlobalStyle = createGlobalStyle`
 
 @font-face {
   font-family: "Merriweather";
-  src: url("/fonts/merriweather/Merriweather-Regular.ttf") format("truetype");
+  src: url("/assets/fonts/merriweather/Merriweather-Regular.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "Varela Round";
-  src: url("/fonts/varelaround/VarelaRound-Regular.ttf") format("truetype");
+  src: url("/assets/fonts/varelaround/VarelaRound-Regular.ttf") format("truetype");
 }
 
 html {
   font-size: 62.5%;
+    height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 body {
   overflow-x: hidden;
+    height: 100vh;
+}
+
+main {
+  flex-grow: 1;
 }
 
 @media (max-width: 768px) {

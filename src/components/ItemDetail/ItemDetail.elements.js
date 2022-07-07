@@ -14,9 +14,9 @@ export const Wrapper = styled.div`
 `;
 
 export const ImageContainer = styled.div`
-    width: 50%;
-    margin: 0 auto;
-`; 
+  width: 50%;
+  margin: 0 auto;
+`;
 
 export const IDContainer = styled.div`
   display: flex;

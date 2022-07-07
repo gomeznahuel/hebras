@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Wrapper, Menu, MenuItem, MenuItemCart, MenuItemCartWrapper, MobileIcon } from "./Navbar.elements";
+import { Wrapper, Menu, MenuItem, MenuItemCartWrapper, MobileIcon } from "./Navbar.elements";
 import { VscThreeBars, VscClose } from "react-icons/vsc";
 import { menuNavigation } from "../../services/Data";
 import { NavLink } from "react-router-dom";
@@ -25,10 +25,8 @@ const Navbar = () => {
           </MenuItem>
         ))}
 
-        <MenuItemCartWrapper>
-          <MenuItemCart onClick={() => setShowMobileMenu(!showMobileMenu)}>
-            <CartWidget />
-          </MenuItemCart>
+        <MenuItemCartWrapper onClick={() => setShowMobileMenu(!showMobileMenu)}>
+          <CartWidget />
         </MenuItemCartWrapper>
       </Menu>
     </Wrapper>

@@ -5,3 +5,7 @@ export const Container = styled.div`
   font-family: var(--font-family-body);
   color: var(--text-color);
 `;
+
+export const Main = styled.main`
+  width: 100%;
+`;

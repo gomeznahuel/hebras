@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Wrapper } from "./ItemListContainer.elements";
+import axios from "axios";
 import Filter from "../../common/Filter/Filter";
 import ItemList from "../../components/ItemList/ItemList";
 import Loader from "../../services/Loader";
@@ -18,8 +19,7 @@ const customId = "custom-id-yes";
 const ItemListContainer = () => {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
-  const [loading, setLoading] = useState(true);
-  
+  const [isLoading, setIsLoading] = useState(true);
 
   // Notify user when getProducts() is wrong.
   const notify = (message) =>
@@ -28,50 +28,53 @@ const ItemListContainer = () => {
       position: toast.POSITION.BOTTOM_CENTER,
       autoClose: "3000",
     });
+
   const { categoryId } = useParams();
 
+  // Get products from API
   useEffect(() => {
-    setLoading(true);
-    fetch(`https://fakestoreapi.com/products/categories`)
-      .then((response) => response.json())
-      .then((data) => {
-        setCategories(data);
-        setLoading(false);
+    setIsLoading(true);
+    if (categoryId) {
+      axios
+        .get(`https://fakestoreapi.com/products/category/${categoryId}`)
+        .then((res) => {
+          setProducts(res.data);
+          setIsLoading(false);
+        })
+        .catch((err) => {
+          notify(err.message);
+          setIsLoading(false);
+        });
+    } else {
+      axios
+        .get("https://fakestoreapi.com/products")
+        .then((res) => {
+          setProducts(res.data);
+          setIsLoading(false);
+        })
+        .catch((err) => {
+          notify(err.message);
+          setIsLoading(false);
+        });
+    }
+  }, [categoryId]);
+
+  // Get categories from API
+  useEffect(() => {
+    axios
+      .get("https://fakestoreapi.com/products/categories")
+      .then((res) => {
+        setCategories(res.data);
       })
-      .catch((error) => {
-        notify(`Something went wrong: ${error}`);
-        setLoading(false);
-      })
-      .finally(() => {
-        setLoading(false);
+      .catch((err) => {
+        notify(err.message);
       });
   }, []);
-
-  useEffect(() => {
-    setLoading(true);
-    fetch(`https://fakestoreapi.com/products`)
-      .then((response) => response.json())
-      .then((data) => {
-        if (categoryId) {
-          setProducts(data.filter((product) => product.category === categoryId));
-          setLoading(false);
-        } else {
-          setProducts(data);
-          setLoading(false);
-        }
-      })
-      .catch((error) => {
-        notify(`Something went wrong: ${error}`);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  }, [categoryId]);    
 
   return (
     <>
       <Wrapper>
-        {loading ? ( <Loader /> ) : (
+        {isLoading ? ( <Loader /> ) : (
           <>
             <Filter categories={categories} />
             <ItemList products={products} />

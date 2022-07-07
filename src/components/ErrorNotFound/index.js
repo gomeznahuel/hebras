@@ -1,15 +1,33 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import { useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import { ErrorNotFoundContainer } from "./ErrorNotFound.elements";
+import lottie from "lottie-web";
+import Button from "../../common/Button/Button";
 
 const ErrorNotFound = () => {
+  const container = useRef(null);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    lottie.loadAnimation({
+      container: container.current,
+      renderer: "svg",
+      loop: true,
+      autoplay: true,
+      animationData: require("../../assets/lotties/notfound.json"),
+    });
+
+    return () => {
+      lottie.destroy();
+    };
+  }, []);
+
   return (
-    <div>
-      <h1>Error 404</h1>
-      <p>Page not found</p>
-      <p>
-        <NavLink to="/">Back to home</NavLink>
-      </p>
-    </div>
+    <ErrorNotFoundContainer>
+      <div ref={container}></div>
+      <Button type="button" handleClick={() => navigate("/")} textButton="Back to home" width="20%" margin="0 auto" />
+    </ErrorNotFoundContainer>
   );
 };
 

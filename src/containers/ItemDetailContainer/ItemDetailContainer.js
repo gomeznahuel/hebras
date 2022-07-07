@@ -5,6 +5,8 @@ import Loader from "../../services/Loader";
 import { ToastContainer, toast } from "react-toastify";
 import ItemDetail from "../../components/ItemDetail/ItemDetail";
 import "react-toastify/dist/ReactToastify.css";
+
+// useParams hook
 import { useParams } from "react-router-dom";
 
 // Custom ID for Toast
@@ -13,7 +15,7 @@ const customId = "custom-id-yes";
 // ItemListContainer component
 const ItemDetailContainer = () => {
   const [product, setProduct] = useState({});
-  const [loading, setLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   // Notify user when getProduct() is wrong.
   const notify = (message) =>
@@ -32,7 +34,7 @@ const ItemDetailContainer = () => {
         const response = await fetch(`https://fakestoreapi.com/products/${productId}`); 
         const data = await response.json();
         setProduct(data);
-        setLoading(false);
+        setIsLoading(false);
       } catch (error) {
         notify(error.message);
       }
@@ -42,7 +44,7 @@ const ItemDetailContainer = () => {
 
   return (
     <div>
-      {loading ? (
+      {isLoading ? (
         <Loader />
       ) : (
         <>

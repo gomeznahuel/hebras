@@ -8,5 +8,6 @@ export const Container = styled.div`
 
   svg {
     font-size: 2.2rem;
+    color: var(--text-color);
   }
 `;

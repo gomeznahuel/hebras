@@ -1,16 +1,18 @@
-import { Container } from "./stylesheet/App.elements";
+import { Main } from "./stylesheet/App.elements";
 import { BrowserRouter } from "react-router-dom";
 import { AppRouter } from "./Router";
 import Header from "./common/Header/Header";
+import Footer from "./common/Footer/Footer";
 
 function App() {
   return (
-    <Container>
-      <BrowserRouter>
-        <Header />
+    <BrowserRouter>
+      <Header />
+      <Main>
         <AppRouter />
-      </BrowserRouter>
-    </Container>
+      </Main>
+      <Footer />
+    </BrowserRouter>
   );
 }
 

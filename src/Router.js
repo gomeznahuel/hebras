@@ -4,6 +4,7 @@ import ItemDetailContainer from "./containers/ItemDetailContainer/ItemDetailCont
 import ErrorNotFound from "./components/ErrorNotFound";
 import AboutPage from "./pages/about";
 import ContactPage from "./pages/contact";
+import Cart from "./containers/Cart";
 
 export const AppRouter = () => {
   return (
@@ -14,6 +15,7 @@ export const AppRouter = () => {
       <Route path="/contact" element={<ContactPage />} />
       <Route path="category/:categoryId" element={<ItemListContainer />} />
       <Route path="/item/:productId" element={<ItemDetailContainer />} />
+      <Route path="/cart" element={<Cart />} />
       <Route path="*" element={<ErrorNotFound />} />
     </Routes>
   );
