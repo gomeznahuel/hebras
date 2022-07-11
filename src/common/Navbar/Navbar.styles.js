@@ -42,9 +42,11 @@ export const MenuItem = styled.li`
     font-family: var(--font-family-body);
     color: var(--text-color);
     cursor: pointer;
+    border-radius: 1em;
 
     &:hover {
       color: var(--base-color);
+      transform: scale(1.1);
       background-color: var(--text-color-background);
       transition: 0.5s all ease;
     }
@@ -83,7 +85,7 @@ export const MenuItemCartWrapper = styled.li`
 
     &:hover {
       transition: 0.5s all ease;
-      transform: scale(1.4);
+      transform: scale(1.1);
     }
   }
 `;

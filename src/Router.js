@@ -5,7 +5,7 @@ import ErrorNotFound from "./components/ErrorNotFound";
 import AboutPage from "./pages/about";
 import ContactPage from "./pages/contact";
 import Cart from "./containers/Cart";
-import { Main } from "./stylesheet/App.elements";
+import { Main } from "./stylesheet/App.styles";
 
 export const AppRouter = () => {
   return (

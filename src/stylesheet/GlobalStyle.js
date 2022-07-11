@@ -52,6 +52,6 @@ main {
   --base-color: #8c9c5c;
   --text-color: #242222;
   --text-color-hover: #D0E889;
-  --text-color-background: #5E693E;
+  --text-color-background: #5E693E; 
 }
 `;

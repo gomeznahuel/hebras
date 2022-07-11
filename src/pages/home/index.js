@@ -1,9 +1,8 @@
-import React from 'react'
+import React from "react";
+import { Layout } from "../../Layout/Layout";
 
 const HomePage = () => {
-  return (
-    <div>HomePage</div>
-  )
-}
+  return <Layout>HomePage</Layout>;
+};
 
-export default HomePage
+export default HomePage;

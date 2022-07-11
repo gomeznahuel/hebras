@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Wrapper } from "./ItemListContainer.elements";
+import { Wrapper } from "./ItemListContainer.styles";
 import axios from "axios";
 import Filter from "../../common/Filter";
 import ItemList from "../../components/ItemList";

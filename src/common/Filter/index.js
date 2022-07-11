@@ -1,5 +1,5 @@
 import { RiArrowDownSLine } from "react-icons/ri";
-import { FilterContainer, Navigation, NavigationSpan, NavigationContent, CategoryFilter, CategoryFilterUL, CategoryFilterLI } from "./Filter.elements";
+import { FilterContainer, Navigation, NavigationSpan, NavigationContent, CategoryFilter, CategoryFilterUL, CategoryFilterLI } from "./Filter.styles";
 import { NavLink } from "react-router-dom";
 
 const Filter = ({ categories }) => {

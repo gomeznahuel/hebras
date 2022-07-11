@@ -1,13 +1,14 @@
-import { useState } from "react";
-import { Wrapper, Menu, MenuItem, MenuItemCartWrapper, MobileIcon } from "./Navbar.elements";
+import { useContext } from "react";
+import { Wrapper, Menu, MenuItem, MenuItemCartWrapper, MobileIcon } from "./Navbar.styles";
 import { VscThreeBars, VscClose } from "react-icons/vsc";
 import { menuNavigation } from "../../services/Data";
 import { NavLink } from "react-router-dom";
 import CartWidget from "../../components/CartWidget";
 import Logo from "../../components/Logo";
+import { NavbarContext } from "../../context/NavbarContext";
 
 const Navbar = () => {
-  const [showMobileMenu, setShowMobileMenu] = useState(false);
+  const { showMobileMenu, setShowMobileMenu } = useContext(NavbarContext);
 
   return (
     <Wrapper>

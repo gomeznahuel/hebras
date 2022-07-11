@@ -1,4 +1,4 @@
-import { LogoContainer } from "./Logo.elements";
+import { LogoContainer } from "./Logo.styles";
 
 const Logo = ({ showMobileMenu, setShowMobileMenu }) => {
   return (

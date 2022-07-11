@@ -1,14 +1,14 @@
 import { toast } from "react-toastify";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Wrapper, ImageContainer, IDContainer,} from "./ItemDetail.elements";
+import { Wrapper, ImageContainer, IDContainer } from "./ItemDetail.styles";
 import Button from "../../common/Button";
 import ItemCount from "../ItemCount";
 
 import { CartContext } from "../../context/CartContext";
 
 const ItemDetail = ({ product }) => {
-  // const [showCount, setShowCount] = useState(true);
+  const [showCount, setShowCount] = useState(true);
   const [quantity, setQuantity] = useState(0);
   const { title, price, description, image, category } = product;
 
@@ -27,7 +27,7 @@ const ItemDetail = ({ product }) => {
       closeButton: false,
       toastId: customId,
     });
-    // setShowCount(false);
+    setShowCount(false);
     setQuantity(qty);
     addItem(product, qty);
   };
@@ -51,10 +51,10 @@ const ItemDetail = ({ product }) => {
           <p>Category: {category}</p>
         </div>
 
-        {/* {showCount ? ( <ItemCount stock={product.stock} initialCount={quantity} onAdd={onAdd} /> ) : ( <NavLink to="/cart">Go to /Cart</NavLink> )} */}
-        {!quantity ? ( <ItemCount stock={product.stock} initialCount={quantity} onAdd={onAdd} />
+        {showCount ? (
+          <ItemCount stock={product.stock} initialCount={quantity} onAdd={onAdd} />
         ) : (
-          <Button type="button" handleClick={() => navigate("/cart")} textButton="Go to /Cart" width="20%" />
+          <Button type="button" handleClick={() => navigate("/cart")} textButton="Finish shopping" />
         )}
       </IDContainer>
     </Wrapper>

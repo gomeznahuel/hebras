@@ -1,4 +1,4 @@
-import { ItemCountContainer, CountContainer, ItemCountButton, AddToCartButton, Count } from "./ItemCount.elements.js";
+import { ItemCountContainer, CountContainer, ItemCountButton, AddToCartButton, Count } from "./ItemCount.styles.js";
 import useCounter from "../../hooks/useCounter.js";
 
 const ItemCount = ({ stock, initialCount, onAdd }) => {

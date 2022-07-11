@@ -43,8 +43,18 @@ const CartProvider = ({ children }) => {
     setCart([]);
   };
 
+  // Get total price
+  const totalPrice = () => {
+    return cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
+  }
+
+  // Show all items in cart
+  const showAllItems = () => {
+    return cart.map((item) => item.quantity);
+  }
+
   return (
-    <CartContext.Provider value={{ cart, setCart, addItem, removeItem, clearCart }} >
+    <CartContext.Provider value={{ cart, setCart, addItem, removeItem, clearCart, totalPrice, showAllItems }} >
       {children}
     </CartContext.Provider>
   );

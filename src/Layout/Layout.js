@@ -1,5 +1,13 @@
-import { LayoutContainer } from "./Layout.elements";
+import { LayoutContainer } from "./Layout.styles";
+import { useContext } from "react";
+import { NavbarContext } from "../context/NavbarContext";
 
 export const Layout = ({ children }) => {
-  return <LayoutContainer>{children}</LayoutContainer>;
+  const { showMobileMenu } = useContext(NavbarContext);
+
+  return (
+    <LayoutContainer style={{ display: showMobileMenu ? "none" : "block" }}>
+      {children}
+    </LayoutContainer>
+  );
 };

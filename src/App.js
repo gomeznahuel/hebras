@@ -1,18 +1,20 @@
-import { BrowserRouter } from "react-router-dom";
 import { AppRouter } from "./Router";
+import { BrowserRouter } from "react-router-dom";
+import { Providers } from "./helpers/Providers";
+import CartProvider from "./context/CartContext";
+import NavbarProvider from "./context/NavbarContext";
 import Header from "./common/Header";
 import Footer from "./common/Footer";
-import CartProvider from "./context/CartContext";
 
 function App() {
   return (
-    <CartProvider>
+    <Providers providers={[<NavbarProvider />, <CartProvider />]}>
       <BrowserRouter>
         <Header />
         <AppRouter />
         <Footer />
       </BrowserRouter>
-    </CartProvider>
+    </Providers>
   );
 }
 

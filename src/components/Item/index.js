@@ -1,4 +1,4 @@
-import { ItemContainer, ItemIMG } from "./Item.elements";
+import { ItemContainer, ItemIMG } from "./Item.styles";
 import Button from "../../common/Button";
 import { useNavigate } from "react-router-dom";
 
