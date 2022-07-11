@@ -1,14 +1,19 @@
 import { toast } from "react-toastify";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Wrapper, ImageContainer, IDContainer,} from "./ItemDetail.elements";
-import Button from "../../common/Button/Button";
-import ItemCount from "../ItemCount/ItemCount";
+import Button from "../../common/Button";
+import ItemCount from "../ItemCount";
+
+import { CartContext } from "../../context/CartContext";
 
 const ItemDetail = ({ product }) => {
   // const [showCount, setShowCount] = useState(true);
   const [quantity, setQuantity] = useState(0);
   const { title, price, description, image, category } = product;
+
+  // Context
+  const { addItem } = useContext(CartContext);
 
   // I added the product stock because the API doesn't have it.
   product.stock = 10;
@@ -24,6 +29,7 @@ const ItemDetail = ({ product }) => {
     });
     // setShowCount(false);
     setQuantity(qty);
+    addItem(product, qty);
   };
 
   // Custom ID for Toast

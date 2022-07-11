@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { ErrorNotFoundContainer } from "./ErrorNotFound.elements";
 import lottie from "lottie-web";
-import Button from "../../common/Button/Button";
+import Button from "../../common/Button";
 
 const ErrorNotFound = () => {
   const container = useRef(null);

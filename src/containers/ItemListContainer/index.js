@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { Wrapper } from "./ItemListContainer.elements";
 import axios from "axios";
-import Filter from "../../common/Filter/Filter";
-import ItemList from "../../components/ItemList/ItemList";
+import Filter from "../../common/Filter";
+import ItemList from "../../components/ItemList";
 import Loader from "../../services/Loader";
+import {Layout} from "../../Layout/Layout";
 
 // Toastify
 import { ToastContainer, toast } from "react-toastify";
@@ -73,6 +74,7 @@ const ItemListContainer = () => {
 
   return (
     <>
+      <Layout>
       <Wrapper>
         {isLoading ? ( <Loader /> ) : (
           <>
@@ -83,6 +85,7 @@ const ItemListContainer = () => {
       </Wrapper>
 
       <ToastContainer style={{ fontSize: "1.2rem", fontWeight: "bold" }} />
+      </Layout>
     </>
   );
 };

@@ -1,18 +1,18 @@
-import { Main } from "./stylesheet/App.elements";
 import { BrowserRouter } from "react-router-dom";
 import { AppRouter } from "./Router";
-import Header from "./common/Header/Header";
-import Footer from "./common/Footer/Footer";
+import Header from "./common/Header";
+import Footer from "./common/Footer";
+import CartProvider from "./context/CartContext";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Header />
-      <Main>
+    <CartProvider>
+      <BrowserRouter>
+        <Header />
         <AppRouter />
-      </Main>
-      <Footer />
-    </BrowserRouter>
+        <Footer />
+      </BrowserRouter>
+    </CartProvider>
   );
 }
 

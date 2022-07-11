@@ -3,8 +3,8 @@ import { Wrapper, Menu, MenuItem, MenuItemCartWrapper, MobileIcon } from "./Navb
 import { VscThreeBars, VscClose } from "react-icons/vsc";
 import { menuNavigation } from "../../services/Data";
 import { NavLink } from "react-router-dom";
-import CartWidget from "../../components/CartWidget/CartWidget";
-import Logo from "../../components/Logo/Logo";
+import CartWidget from "../../components/CartWidget";
+import Logo from "../../components/Logo";
 
 const Navbar = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);

@@ -3,7 +3,7 @@ import Loader from "../../services/Loader";
 
 // Toastify
 import { ToastContainer, toast } from "react-toastify";
-import ItemDetail from "../../components/ItemDetail/ItemDetail";
+import ItemDetail from "../../components/ItemDetail";
 import "react-toastify/dist/ReactToastify.css";
 
 // useParams hook

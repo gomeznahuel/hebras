@@ -1,5 +1,5 @@
 import { ItemListWrapper } from "./ItemList.elements";
-import Item from "../Item/Item";
+import Item from "../Item";
 
 const ItemList = ({ products }) => {
   return (

@@ -1,5 +1,5 @@
 import { ItemContainer, ItemIMG } from "./Item.elements";
-import Button from "../../common/Button/Button";
+import Button from "../../common/Button";
 import { useNavigate } from "react-router-dom";
 
 const Item = ({ product }) => {
