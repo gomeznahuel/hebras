@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const ButtonContainer = styled.button`
-  background: var(--background-color);
-  color: var(--text-color-hover);
+  background: var(--dark-gray);
+  color: var(--dark-golden);
   border: none;
   border-radius: 5px;
   padding: 0.5em 1em;
@@ -11,9 +11,7 @@ export const ButtonContainer = styled.button`
   cursor: pointer;
   transition: all 0.3s ease-in-out;
   &:hover {
-    background: var(--text-color-hover);
-    background: var(--text-color);
-    color: var(--base-color);
+    color: var(--text-hover);
   }
   &:focus {
     outline: none;

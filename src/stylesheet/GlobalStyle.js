@@ -39,19 +39,18 @@ main {
   flex-grow: 1;
 }
 
+:root {
+  --font-family-title: "Merriweather";
+  --font-family-body: "Varela Round";
+  --dark-gray: #121212;
+  --dark-blue: #050B23;
+  --dark-golden: #BFA37E;
+  --text-hover: #f5f5f5;
+}
+
 @media (max-width: 768px) {
   html {
     font-size: 56.25%;
   }
-}
-
-:root {
-  --font-family-title: "Merriweather";
-  --font-family-body: "Varela Round";
-  --background-color: #5E693E;
-  --base-color: #8c9c5c;
-  --text-color: #242222;
-  --text-color-hover: #D0E889;
-  --text-color-background: #5E693E; 
 }
 `;

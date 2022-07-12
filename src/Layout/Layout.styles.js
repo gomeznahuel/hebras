@@ -5,5 +5,5 @@ export const LayoutContainer = styled.div`
   height: 100%;
   position: relative;
   z-index: 1;
-  background-color: #FFFCEC;
+  /* background-color: #FFFCEC; */
 `;

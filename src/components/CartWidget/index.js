@@ -5,14 +5,12 @@ import { CartContext } from "../../context/CartContext";
 import { useContext } from "react";
 
 const CartWidget = () => {
-  const { showAllItems } = useContext(CartContext);
+  const { showTotalProducts } = useContext(CartContext);
   return (
     <Container>
-      {showAllItems() > 0 ? (
-        <NavLink to="/cart">
-          <BsCart3 /> {showAllItems()}
-        </NavLink>
-      ) : null}
+      <NavLink to="/cart">
+        <BsCart3 size={30} /> <span>{showTotalProducts()}</span>
+      </NavLink>
     </Container>
   );
 };

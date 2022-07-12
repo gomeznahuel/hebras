@@ -13,9 +13,9 @@ export const Menu = styled.ul`
   justify-content: space-between;
   align-items: center;
   z-index: 2;
+  background-color: var(--dark-gray);
 
   @media screen and (max-width: 960px) {
-    background-color: var(--base-color);
     position: absolute;
     top: 70px;
     left: ${({ open }) => (open ? "0" : "-100%")};
@@ -40,14 +40,12 @@ export const MenuItem = styled.li`
     font-size: 1.8rem;
     transition: 0.5s all ease;
     font-family: var(--font-family-body);
-    color: var(--text-color);
     cursor: pointer;
     border-radius: 1em;
+    color: var(--dark-golden);
 
     &:hover {
-      color: var(--base-color);
-      transform: scale(1.1);
-      background-color: var(--text-color-background);
+      color: var(--text-hover);
       transition: 0.5s all ease;
     }
   }
@@ -99,7 +97,7 @@ export const MobileIcon = styled.div`
     cursor: pointer;
 
     svg {
-      fill: var(--text-color);
+      fill: var(--dark-golden);
       margin-right: 0.5rem;
       font-size: 4em;
     }

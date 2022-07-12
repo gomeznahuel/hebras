@@ -5,7 +5,7 @@ export const LogoContainer = styled.div`
   align-items: center;
   font-size: 3rem;
   font-family: var(--font-family-title);
-  color: var(--text-color);
+  color: var(--dark-golden);
 
   &:hover {
     cursor: pointer;

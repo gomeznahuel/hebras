@@ -49,12 +49,12 @@ const CartProvider = ({ children }) => {
   }
 
   // Show all items in cart
-  const showAllItems = () => {
-    return cart.map((item) => item.quantity);
+  const showTotalProducts = () => {
+    return cart.reduce((acc, item) => acc + item.quantity, 0);
   }
 
   return (
-    <CartContext.Provider value={{ cart, setCart, addItem, removeItem, clearCart, totalPrice, showAllItems }} >
+    <CartContext.Provider value={{ cart, setCart, addItem, removeItem, clearCart, totalPrice, showTotalProducts }} >
       {children}
     </CartContext.Provider>
   );
