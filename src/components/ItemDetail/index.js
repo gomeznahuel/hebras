@@ -1,7 +1,10 @@
 import { toast } from "react-toastify";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Wrapper, ImageContainer, IDContainer } from "./ItemDetail.styles";
+import { Wrapper, IDContainer, ItemDetailTitle, ItemDetailSpan, ItemDetailSize, ItemDetailSizeSpan } from "./ItemDetail.styles";
+import { Currency } from "../../helpers/Currency";
+import Image from '../Image';
+
 import Button from "../../common/Button";
 import ItemCount from "../ItemCount";
 
@@ -9,14 +12,11 @@ import { CartContext } from "../../context/CartContext";
 
 const ItemDetail = ({ product }) => {
   const [showCount, setShowCount] = useState(true);
-  const [quantity, setQuantity] = useState(0);
-  const { title, price, description, image, category } = product;
+  const [quantity, setQuantity] = useState(1);
+  const { title, price, description, image, category, size } = product;
 
   // Context
   const { addItem } = useContext(CartContext);
-
-  // I added the product stock because the API doesn't have it.
-  product.stock = 10;
 
   // This function is called when the user clicks the "Add to cart" button.
   const onAdd = (qty) => {
@@ -35,22 +35,19 @@ const ItemDetail = ({ product }) => {
   // Custom ID for Toast
   const customId = "custom-id-yes";
 
+  // useNavigate is used to navigate to the cart page.
   const navigate = useNavigate();
 
   return (
     <Wrapper>
-      <ImageContainer>
-        <img src={image} alt={title} />
-      </ImageContainer>
+      <Image src={image} title={title} maxWidth="30%" />
 
       <IDContainer>
-        <div>
-          <h1>{title}</h1>
-          <p>${price}</p>
-          <p>{description}</p>
-          <p>Category: {category}</p>
-        </div>
-
+          <ItemDetailTitle>{title.toUpperCase()}</ItemDetailTitle>
+          <ItemDetailSpan>{Currency(price)}</ItemDetailSpan>
+          <ItemDetailSpan>{description}</ItemDetailSpan>
+          <ItemDetailSize>{size.map((t, index) => {return <ItemDetailSizeSpan key={index}>{t}</ItemDetailSizeSpan>})}</ItemDetailSize>
+          <ItemDetailSpan>Category: {category}</ItemDetailSpan>
         {showCount ? (
           <ItemCount stock={product.stock} initialCount={quantity} onAdd={onAdd} />
         ) : (

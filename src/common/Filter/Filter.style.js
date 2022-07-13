@@ -13,7 +13,11 @@ export const FilterContainer = styled.div`
 `;
 
 export const CategoryFilter = styled.div`
-  width: 50%;
+  width: 40%;
+
+  @media (max-width: 576px) {
+    width: 100%;
+  }
 `;
 
 export const CategoryFilterUL = styled.ul`

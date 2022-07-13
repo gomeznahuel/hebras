@@ -1,26 +1,25 @@
 import { useEffect, useState } from "react";
-import { Wrapper } from "./ItemListContainer.styles";
-import axios from "axios";
-import Filter from "../../common/Filter";
+import { useParams } from "react-router-dom";
+
+// Components
 import ItemList from "../../components/ItemList";
+import Filter from "../../common/Filter";
+
+// Firebase
+import { getDocs, collection, query, where } from "firebase/firestore";
+import { firestoreDb } from "../../firebase/config";
+
+// Loader
 import Loader from "../../services/Loader";
-import {Layout} from "../../Layout/Layout";
 
 // Toastify
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-// useParams hook
-import { useParams } from "react-router-dom";
-
-// Custom ID for Toast
-const customId = "custom-id-yes";
-
-// ItemListContainer component
 const ItemListContainer = () => {
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [categories, setCategories] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
 
   // Notify user when getProducts() is wrong.
   const notify = (message) =>
@@ -30,62 +29,54 @@ const ItemListContainer = () => {
       autoClose: "3000",
     });
 
+  // Custom ID for Toast
+  const customId = "custom-id-yes";
+
   const { categoryId } = useParams();
 
-  // Get products from API
   useEffect(() => {
-    setIsLoading(true);
-    if (categoryId) {
-      axios
-        .get(`https://fakestoreapi.com/products/category/${categoryId}`)
-        .then((res) => {
-          setProducts(res.data);
-          setIsLoading(false);
-        })
-        .catch((err) => {
-          notify(err.message);
-          setIsLoading(false);
+    setLoading(true);
+    const collectionRef = categoryId
+      ? query(collection(firestoreDb, "products"), where("category", "==", categoryId))
+      : collection(firestoreDb, "products");
+
+    // Get all products
+    getDocs(collectionRef)
+      .then((response) => {
+        const products = response.docs.map((doc) => {
+          return { id: doc.id, ...doc.data() };
         });
-    } else {
-      axios
-        .get("https://fakestoreapi.com/products")
-        .then((res) => {
-          setProducts(res.data);
-          setIsLoading(false);
-        })
-        .catch((err) => {
-          notify(err.message);
-          setIsLoading(false);
-        });
-    }
+        setProducts(products);
+      })
+      .catch((error) => {
+        notify(error.message);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   }, [categoryId]);
 
-  // Get categories from API
+    // Get categories for filter
   useEffect(() => {
-    axios
-      .get("https://fakestoreapi.com/products/categories")
-      .then((res) => {
-        setCategories(res.data);
-      })
-      .catch((err) => {
-        notify(err.message);
+    getDocs(collection(firestoreDb, "categories")).then((response) => {
+      const categories = response.docs.map((cat) => {
+        return { id: cat.id, ...cat.data() };
       });
+      setCategories(categories);
+    });
   }, []);
 
   return (
     <>
-      <Layout>
-      <Wrapper>
-        {isLoading ? ( <Loader /> ) : (
-          <>
-            <Filter categories={categories} />
-            <ItemList products={products} />
-          </>
-        )}
-      </Wrapper>
-
-      <ToastContainer style={{ fontSize: "1.2rem", fontWeight: "bold" }} />
-      </Layout>
+      {loading ? (
+        <Loader />
+      ) : (
+        <>
+          <Filter categories={categories} />
+          <ItemList products={products} />
+          <ToastContainer style={{ fontSize: "1.2rem", fontWeight: "bold" }} />
+        </>
+      )}
     </>
   );
 };

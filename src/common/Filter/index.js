@@ -1,5 +1,4 @@
-import { RiArrowDownSLine } from "react-icons/ri";
-import { FilterContainer, Navigation, NavigationSpan, NavigationContent, CategoryFilter, CategoryFilterUL, CategoryFilterLI } from "./Filter.styles";
+import { FilterContainer, CategoryFilter, CategoryFilterUL, CategoryFilterLI } from "./Filter.style";
 import { NavLink } from "react-router-dom";
 
 const Filter = ({ categories }) => {
@@ -9,29 +8,18 @@ const Filter = ({ categories }) => {
         <CategoryFilterUL>
 
           <CategoryFilterLI>
-            <NavLink to="/">All</NavLink>
+            <NavLink to="/products">All</NavLink>
           </CategoryFilterLI>
           
-          {categories.map((categorie) => (
-            <CategoryFilterLI key={categorie}>
-              <NavLink to={`/category/${categorie}`}>
-                {categorie}
+          {categories.map((categorie, index) => (
+            <CategoryFilterLI key={index}>
+              <NavLink to={`/category/${categorie.description}`}>
+                {categorie.description}
               </NavLink>
             </CategoryFilterLI>
           ))}
         </CategoryFilterUL>
       </CategoryFilter>
-
-      <Navigation>
-        <NavigationSpan>
-          Sort by <RiArrowDownSLine />
-        </NavigationSpan>
-        <NavigationContent>
-          <NavLink to="/">Newest arrivals</NavLink>
-          <NavLink to="/">Price: Low to High</NavLink>
-          <NavLink to="/">Price: High to Low</NavLink>
-        </NavigationContent>
-      </Navigation>
     </FilterContainer>
   );
 };

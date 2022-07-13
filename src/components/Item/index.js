@@ -1,6 +1,8 @@
-import { ItemContainer, ItemIMG } from "./Item.styles";
-import Button from "../../common/Button";
+import { ItemContainer, ItemTitle, ItemPrice } from "./Item.styles";
 import { useNavigate } from "react-router-dom";
+import { Currency } from "../../helpers/Currency";
+import Button from "../../common/Button";
+import Image from "../Image";
 
 const Item = ({ product }) => {
   const { title, price, image } = product;
@@ -12,9 +14,9 @@ const Item = ({ product }) => {
 
   return (
     <ItemContainer>
-      <h4>{title}</h4>
-      <ItemIMG src={image} alt={title} />
-      <p>${price}</p>
+      <Image src={image} title={title} maxWidth="100%" />
+      <ItemTitle>{title.toUpperCase()}</ItemTitle>
+      <ItemPrice>{Currency(price)}</ItemPrice>
       <Button textButton="View details" handleClick={handleDetail} />
     </ItemContainer>
   );

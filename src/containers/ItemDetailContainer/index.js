@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import Loader from "../../services/Loader";
+import { doc, getDoc } from "firebase/firestore";
+import { firestoreDb } from "../../firebase/config";
 
 // Toastify
 import { ToastContainer, toast } from "react-toastify";
@@ -27,13 +29,18 @@ const ItemDetailContainer = () => {
 
   const { productId } = useParams();
 
-  // Get only one product from API
   useEffect(() => {
     const getProduct = async () => {
       try {
-        const response = await fetch(`https://fakestoreapi.com/products/${productId}`); 
-        const data = await response.json();
-        setProduct(data);
+        const docRef = doc(firestoreDb, "products", productId);
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+          const productDetail = { id: docSnap.id, ...docSnap.data() };
+          setProduct(productDetail);
+        } else {
+          console.log("No such document!");
+        }
         setIsLoading(false);
       } catch (error) {
         notify(error.message);
@@ -43,7 +50,7 @@ const ItemDetailContainer = () => {
   }, [productId]);
 
   return (
-    <div>
+    <>
       {isLoading ? (
         <Loader />
       ) : (
@@ -52,7 +59,7 @@ const ItemDetailContainer = () => {
           <ToastContainer style={{ fontSize: "1.2rem", fontWeight: "bold" }} />
         </>
       )}
-    </div>
+    </>
   );
 };
 

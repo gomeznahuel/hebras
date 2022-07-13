@@ -1,5 +1,6 @@
-import { ItemCountContainer, CountContainer, ItemCountButton, AddToCartButton, Count } from "./ItemCount.styles.js";
+import { ItemCountContainer, CountContainer, Count } from "./ItemCount.styles.js";
 import useCounter from "../../hooks/useCounter.js";
+import Button from "../../common/Button";
 
 const ItemCount = ({ stock, initialCount, onAdd }) => {
   const { count, counter } = useCounter(initialCount);
@@ -7,13 +8,11 @@ const ItemCount = ({ stock, initialCount, onAdd }) => {
   return (
     <ItemCountContainer>
       <CountContainer>
-        <ItemCountButton onClick={() => counter.subtract()} disabled={count <= initialCount}>-</ItemCountButton>
+        <Button handleClick={() => counter.subtract()} textButton='-' padding=".3em 1em" disabled={count === initialCount} />
         <Count>{count}</Count>
-        <ItemCountButton onClick={() => counter.add()} disabled={count === stock}>+</ItemCountButton>
+        <Button handleClick={() => counter.add()} textButton='+' padding=".3em 1em" disabled={count === stock} />
       </CountContainer>
-      <AddToCartButton onClick={() => onAdd(count)} disabled={count <= initialCount}>
-        Add to cart
-      </AddToCartButton>
+      <Button handleClick={() => onAdd(count)} disabled={count > stock} textButton='Add to cart' />
     </ItemCountContainer>
   );
 };

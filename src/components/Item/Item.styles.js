@@ -1,17 +1,20 @@
 import styled from "styled-components";
 
-export const ItemIMG = styled.img`
-  max-width: 60%;
-`;
-
 export const ItemContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   margin: 0 auto;
+`;
 
-  button {
-    margin-top: 0.63em;
-  }
+export const ItemTitle = styled.h4`
+  font-size: 2rem;
+  margin-top: .4em;
+`;
+
+export const ItemPrice = styled.span`
+  font-size: 1.5rem;
+  margin: 0.5rem 0;
+  font-weight: bold;
 `;

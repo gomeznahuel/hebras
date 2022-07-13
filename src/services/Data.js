@@ -1,6 +1,6 @@
 export const menuNavigation = [
   { name: "Home", link: "/" },
   { name: "Products", link: "/products" },
-  { name: "About Us", link: "/about" },
+  { name: "Frequent questions", link: "/faq" },
   { name: "Contact", link: "/contact" },
 ];

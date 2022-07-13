@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { ErrorNotFoundContainer } from "./ErrorNotFound.styles";
+import { ErrorNotFoundContainer, ErrorNotFoundAnimation } from "./ErrorNotFound.styles";
 import lottie from "lottie-web";
 import Button from "../../common/Button";
 
@@ -25,7 +25,7 @@ const ErrorNotFound = () => {
 
   return (
     <ErrorNotFoundContainer>
-      <div ref={container}></div>
+      <ErrorNotFoundAnimation ref={container}></ErrorNotFoundAnimation>
       <Button type="button" handleClick={() => navigate("/")} textButton="Back to home" width="20%" margin="0 auto" />
     </ErrorNotFoundContainer>
   );

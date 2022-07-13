@@ -25,7 +25,6 @@ const CartProvider = ({ children }) => {
         return item;
       });
       setCart(newCart);
-      console.log(newCart);
     } else {
       if (quantity > 0) {
         setCart((prevState) => [...prevState, newItem]);
@@ -46,15 +45,22 @@ const CartProvider = ({ children }) => {
   // Get total price
   const totalPrice = () => {
     return cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
-  }
+  };
 
   // Show all items in cart
   const showTotalProducts = () => {
     return cart.reduce((acc, item) => acc + item.quantity, 0);
-  }
+  };
+
+  // Get price for product by id
+  const priceForProduct = (id) => {
+    let product = cart.find((item) => item.id === id);
+    return product.price;
+  };
 
   return (
-    <CartContext.Provider value={{ cart, setCart, addItem, removeItem, clearCart, totalPrice, showTotalProducts }} >
+    <CartContext.Provider
+      value={{ cart, priceForProduct, setCart, addItem, removeItem, clearCart, totalPrice, showTotalProducts }}>
       {children}
     </CartContext.Provider>
   );

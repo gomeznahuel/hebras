@@ -6,10 +6,11 @@ export const ButtonContainer = styled.button`
   border: none;
   border-radius: 5px;
   padding: 0.5em 1em;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   font-family: var(--font-family-title);
   cursor: pointer;
   transition: all 0.3s ease-in-out;
+
   &:hover {
     color: var(--text-hover);
   }

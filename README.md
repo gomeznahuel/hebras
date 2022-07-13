@@ -11,6 +11,7 @@ This app is a shopping cart. It was used to build a friendly user experience wit
 | Axios | https://axios-http.com |
 | React Spinners | https://www.npmjs.com/package/react-spinners |
 | React Toastify | https://www.npmjs.com/package/react-toastify |
+| Firebase | https://firebase.google.com |
 | Lottie Files | https://lottiefiles.com |
 
 ## Authors
