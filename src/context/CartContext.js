@@ -1,9 +1,12 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 export const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
-  const [cart, setCart] = useState([]);
+  // useState with localStorage
+  const [cart, setCart] = useState(
+    JSON.parse(localStorage.getItem("cart")) || []
+  );
 
   // Check if the item is already in the cart
   const isInCart = (id) => {
@@ -25,6 +28,8 @@ const CartProvider = ({ children }) => {
         return item;
       });
       setCart(newCart);
+      // set cart to localStorage
+      localStorage.setItem("cart", JSON.stringify(newCart));
     } else {
       if (quantity > 0) {
         setCart((prevState) => [...prevState, newItem]);
@@ -58,9 +63,13 @@ const CartProvider = ({ children }) => {
     return product.price;
   };
 
+  // Set products on localStorage
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
+
   return (
-    <CartContext.Provider
-      value={{ cart, priceForProduct, setCart, addItem, removeItem, clearCart, totalPrice, showTotalProducts }}>
+    <CartContext.Provider value={{ cart, priceForProduct, setCart, addItem, removeItem, clearCart, totalPrice, showTotalProducts, }}>
       {children}
     </CartContext.Provider>
   );
