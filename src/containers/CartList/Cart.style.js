@@ -29,11 +29,6 @@ export const TableTH = styled.th`
   padding: 0.5em 0;
 `;
 
-export const TableTD = styled.td`
-  text-align: center;
-  border: 1px solid black;
-`;
-
 export const TotalPriceContainer = styled.div`
   width: fit-content;
   margin: 0 auto;
@@ -50,20 +45,6 @@ export const TotalPrice = styled.p`
   width: fit-content;
   padding: 0.5em 0.8em;
   border-radius: 0.5em;
-  text-align: center;
-  margin: 1em auto;
-`;
-
-export const CartEmptyContainer = styled.div`
-  width: fit-content;
-  margin: 0 auto;
-  font-size: 2rem;
-  text-align: center;
-`;
-
-export const CartEmpty = styled.h1`
-  font-family: var(--font-family-title);
-  color: var(--dark-golden);
   text-align: center;
   margin: 1em auto;
 `;

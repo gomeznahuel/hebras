@@ -3,15 +3,16 @@ import { Main } from "./stylesheet/App.styles";
 import ItemListContainer from "./containers/ItemListContainer";
 import ItemDetailContainer from "./containers/ItemDetailContainer";
 import ErrorNotFound from "./components/ErrorNotFound";
-import Cart from "./containers/Cart";
+import Cart from "./containers/CartList";
 import FaqPage from "./pages/faq";
 import ContactPage from "./pages/contact";
+import HomePage from "./pages/home";
 
 export const AppRouter = () => {
   return (
     <Main>
       <Routes>
-        <Route path="/" element={<ItemListContainer />} />
+        <Route path="/" element={<HomePage />} />
         <Route path="/products" element={<ItemListContainer />} />
         <Route path="/faq" element={<FaqPage />} />
         <Route path="/contact" element={<ContactPage />} />

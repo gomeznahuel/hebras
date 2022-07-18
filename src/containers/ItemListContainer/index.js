@@ -5,15 +5,14 @@ import { useParams } from "react-router-dom";
 import ItemList from "../../components/ItemList";
 import Filter from "../../common/Filter";
 
-// Firebase
-import { getDocs, collection, query, where } from "firebase/firestore";
-import { firestoreDb } from "../../firebase/config";
-
 // Loader
 import Loader from "../../services/Loader";
 
 // Toastify
+import { Wrapper } from "./ItemListContainer.styles";
 import { ToastContainer, toast } from "react-toastify";
+import { Layout } from "../../Layout/Layout";
+import { getCategories, getProducts } from "../../helpers/GetProducts";
 import "react-toastify/dist/ReactToastify.css";
 
 const ItemListContainer = () => {
@@ -34,18 +33,12 @@ const ItemListContainer = () => {
 
   const { categoryId } = useParams();
 
+  // Get products from Firebase
+
   useEffect(() => {
     setLoading(true);
-    const collectionRef = categoryId
-      ? query(collection(firestoreDb, "products"), where("category", "==", categoryId))
-      : collection(firestoreDb, "products");
-
-    // Get all products
-    getDocs(collectionRef)
-      .then((response) => {
-        const products = response.docs.map((doc) => {
-          return { id: doc.id, ...doc.data() };
-        });
+    getProducts(categoryId)
+      .then((products) => {
         setProducts(products);
       })
       .catch((error) => {
@@ -54,30 +47,37 @@ const ItemListContainer = () => {
       .finally(() => {
         setLoading(false);
       });
-  }, [categoryId]);
+  }, [categoryId]); // eslint-disable-line
 
-    // Get categories for filter
+  // Get categories from Firebase
   useEffect(() => {
-    getDocs(collection(firestoreDb, "categories")).then((response) => {
-      const categories = response.docs.map((cat) => {
-        return { id: cat.id, ...cat.data() };
+    setLoading(true);
+    getCategories()
+      .then((categories) => {
+        setCategories(categories);
+      })
+      .catch((error) => {
+        notify(error.message);
+      })
+      .finally(() => {
+        setLoading(false);
       });
-      setCategories(categories);
-    });
-  }, []);
+  }, []); 
 
   return (
-    <>
+    <Layout>
       {loading ? (
         <Loader />
       ) : (
         <>
           <Filter categories={categories} />
-          <ItemList products={products} />
+          <Wrapper>
+            <ItemList products={products} />
+          </Wrapper>
           <ToastContainer style={{ fontSize: "1.2rem", fontWeight: "bold" }} />
         </>
       )}
-    </>
+    </Layout>
   );
 };
 

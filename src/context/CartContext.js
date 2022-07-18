@@ -4,9 +4,8 @@ export const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
   // useState with localStorage
-  const [cart, setCart] = useState(
-    JSON.parse(localStorage.getItem("cart")) || []
-  );
+  const [cart, setCart] = useState(JSON.parse(localStorage.getItem("cart")) || []);
+  const [products, setProducts] = useState([]);
 
   // Check if the item is already in the cart
   const isInCart = (id) => {
@@ -68,8 +67,10 @@ const CartProvider = ({ children }) => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
 
+  const value = { cart, addItem, removeItem, clearCart, totalPrice, showTotalProducts, priceForProduct, products, setProducts };
+
   return (
-    <CartContext.Provider value={{ cart, priceForProduct, setCart, addItem, removeItem, clearCart, totalPrice, showTotalProducts, }}>
+    <CartContext.Provider value={value}>
       {children}
     </CartContext.Provider>
   );

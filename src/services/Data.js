@@ -4,3 +4,5 @@ export const menuNavigation = [
   { name: "Frequent questions", link: "/faq" },
   { name: "Contact", link: "/contact" },
 ];
+
+export const renderCartItems = ["Product", "Image", "Individual price", "Quantity", "Remove"]; 

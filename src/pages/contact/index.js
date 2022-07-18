@@ -1,10 +1,11 @@
-import React from 'react'
-import { Layout } from '../../Layout/Layout'
+import { Layout } from "../../Layout/Layout";
 
 const ContactPage = () => {
   return (
-    <Layout>ContactPage</Layout>
-  )
-}
+    <Layout>
+      <h1>Form</h1>
+    </Layout>
+  );
+};
 
-export default ContactPage
+export default ContactPage;

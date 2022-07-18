@@ -8,7 +8,7 @@ import Footer from "./common/Footer";
 
 function App() {
   return (
-    <Providers providers={[<NavbarProvider />, <CartProvider />]}>
+    <Providers providers={[<NavbarProvider />, <CartProvider /> ]}>
       <BrowserRouter>
         <Header />
         <AppRouter />

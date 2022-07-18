@@ -3,7 +3,9 @@ import { Layout } from '../../Layout/Layout'
 
 const FaqPage = () => {
   return (
-    <Layout>FAQ Page</Layout>
+    <Layout>
+      <h1>FaqPage</h1>
+    </Layout>
   )
 }
 

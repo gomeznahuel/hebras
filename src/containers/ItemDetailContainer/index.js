@@ -10,6 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 // useParams hook
 import { useParams } from "react-router-dom";
+import { Layout } from "../../Layout/Layout";
 
 // Custom ID for Toast
 const customId = "custom-id-yes";
@@ -50,7 +51,7 @@ const ItemDetailContainer = () => {
   }, [productId]);
 
   return (
-    <>
+    <Layout>
       {isLoading ? (
         <Loader />
       ) : (
@@ -59,7 +60,7 @@ const ItemDetailContainer = () => {
           <ToastContainer style={{ fontSize: "1.2rem", fontWeight: "bold" }} />
         </>
       )}
-    </>
+    </Layout>
   );
 };
 

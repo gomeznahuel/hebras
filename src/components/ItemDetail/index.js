@@ -21,7 +21,7 @@ const ItemDetail = ({ product }) => {
   // This function is called when the user clicks the "Add to cart" button.
   const onAdd = (qty) => {
     toast.success(`Added ${qty} "${title}" to cart!`, {
-      position: "top-right",
+      position: "bottom-left",
       autoClose: 3000,
       hideProgressBar: false,
       closeButton: false,
