@@ -4,7 +4,7 @@ import { TableContainer, TotalPriceContainer, TotalPrice, THead, TableTR, TableT
 import { Currency } from "../../helpers/Currency";
 import { Cart } from "../../components/Cart";
 import { EmptyCart } from "../../components/EmptyCart";
-import { renderCartItems } from "../../services/Data";
+import { renderCartItems } from "../../helpers/Data";
 import Button from "../../common/Button";
 import GeneratedOrder from "../../utils/GenerateOrder";
 import SaveOrder from "../../utils/SaveOrder";
@@ -48,12 +48,12 @@ const CartList = () => {
           </TotalPriceContainer>
 
           <Button handleClick={confirmOrder} width={"fit-content"} height={"3em"} textButton="Confirm order" />
-        </>
-      ) : (
-         <EmptyCart />
+          </>
+      ) : ( 
+        <EmptyCart />
       )}
     </>
   );
-}
+};
 
 export default CartList;

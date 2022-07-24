@@ -5,10 +5,7 @@ import { firestoreDb } from "../firebase/config";
 export const getProducts = async (categoryId) => {
   try {
     const collectionRef = categoryId
-      ? query(
-          collection(firestoreDb, "products"),
-          where("category", "==", categoryId)
-        )
+      ? query(collection(firestoreDb, "products"), where("category", "==", categoryId))
       : collection(firestoreDb, "products");
 
     const response = await getDocs(collectionRef);

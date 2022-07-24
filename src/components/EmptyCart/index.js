@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
-import Button from "../../common/Button";
 import { CartEmptyContainer, CartEmpty } from "./EmptyCart.style";
+import Button from "../../common/Button";
 
 export const EmptyCart = () => {
   return (

@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { ErrorNotFoundContainer, ErrorNotFoundAnimation } from "./ErrorNotFound.styles";
 import lottie from "lottie-web";
-import Button from "../../common/Button";
+import Button from "../../../common/Button";
 
 const ErrorNotFound = () => {
   const container = useRef(null);
@@ -15,7 +15,7 @@ const ErrorNotFound = () => {
       renderer: "svg",
       loop: true,
       autoplay: true,
-      animationData: require("../../assets/lotties/notfound.json"),
+      animationData: require("../../../assets/lotties/notfound.json"),
     });
 
     return () => {

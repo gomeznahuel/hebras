@@ -6,13 +6,13 @@ import ItemList from "../../components/ItemList";
 import Filter from "../../common/Filter";
 
 // Loader
-import Loader from "../../services/Loader";
+import Loader from "../../helpers/Loader";
 
 // Toastify
 import { Wrapper } from "./ItemListContainer.styles";
 import { ToastContainer, toast } from "react-toastify";
 import { Layout } from "../../Layout/Layout";
-import { getCategories, getProducts } from "../../helpers/GetProducts";
+import { getCategories, getProducts } from "../../services/GetProducts";
 import "react-toastify/dist/ReactToastify.css";
 
 const ItemListContainer = () => {

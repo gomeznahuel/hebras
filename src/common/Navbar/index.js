@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Wrapper, Menu, MenuItem, MenuItemCartWrapper, MobileIcon } from "./Navbar.styles";
 import { VscThreeBars, VscClose } from "react-icons/vsc";
-import { menuNavigation } from "../../services/Data";
+import { menuNavigation } from "../../helpers/Data";
 import { NavLink } from "react-router-dom";
 import CartWidget from "../../components/CartWidget";
 import Logo from "../../components/Logo";

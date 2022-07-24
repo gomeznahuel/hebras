@@ -1,0 +1,23 @@
+/* Requerimientos 👈
+
+.main-header
+
+
+Deberá mostrar los elementos internos distribuídos de forma horizontal, utilizando flexbox.
+El color de fondo deberá ser dodgerblue.
+El header debe mantenerse siempre fijo en la pantalla (aunque el usuario scrollee).
+
+
+.logo-container
+
+
+Su espacio interno deberá ser de 15px.
+La imagen interna deberá mostrarse envuelta en un círculo.
+
+
+.main-navigation
+
+
+Deberá mostrar la lista de elementos uno al lado de otro, distribuídos de forma horizontal, utilizando flexbox.
+Al pasar el mouse sobre alguno de los elementos de navegación, el texto deberá convertirse a negrita.
+La lista no deberá contener ninguna decoración. */

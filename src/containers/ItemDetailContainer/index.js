@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import Loader from "../../services/Loader";
+import Loader from "../../helpers/Loader";
 import { doc, getDoc } from "firebase/firestore";
 import { firestoreDb } from "../../firebase/config";
+import { ProductNotFound } from "../../components/NotFound/ProductNotFound";
 
 // Toastify
 import { ToastContainer, toast } from "react-toastify";
@@ -18,6 +19,7 @@ const customId = "custom-id-yes";
 // ItemListContainer component
 const ItemDetailContainer = () => {
   const [product, setProduct] = useState({});
+  const [isProductAvailable, setIsProductAvailable] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
   // Notify user when getProduct() is wrong.
@@ -39,8 +41,11 @@ const ItemDetailContainer = () => {
         if (docSnap.exists()) {
           const productDetail = { id: docSnap.id, ...docSnap.data() };
           setProduct(productDetail);
+          setIsProductAvailable(true);
         } else {
-          console.log("No such document!");
+          // console.log("No such document!");
+          // notify("Product not found!");
+          setIsProductAvailable(false);
         }
         setIsLoading(false);
       } catch (error) {
@@ -56,7 +61,12 @@ const ItemDetailContainer = () => {
         <Loader />
       ) : (
         <>
-          <ItemDetail product={product} />
+          {/* <ItemDetail product={product} /> */}
+          {isProductAvailable ? (
+            <ItemDetail product={product} />
+          ) : (
+            <ProductNotFound />
+          )}
           <ToastContainer style={{ fontSize: "1.2rem", fontWeight: "bold" }} />
         </>
       )}
