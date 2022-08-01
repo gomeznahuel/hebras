@@ -12,5 +12,5 @@ export const ProductNotFoundContainer = styled.div`
   font-size: 2rem;
   font-weight: bold;
   color: #333;
-  font-family: var(--font-family-title);
+  font-family: ${(props) => props.theme.fonts.title};
 `;

@@ -1,11 +1,10 @@
-import React from "react";
 import { CarouselContainer } from "../../components/Carousel";
 import { Layout } from "../../Layout/Layout";
 import { useEffect } from "react";
 import { getProducts } from "../../services/GetProducts";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { CardsContainer, Card } from "./HomePage.style";
+import { CardsContainer, SelectedProductsContainer, Card } from "./style";
 import Loader from "../../helpers/Loader";
 import Image from "../../components/Image";
 import Button from "../../common/Button";
@@ -35,7 +34,7 @@ const HomePage = () => {
       {loading ? (
         <Loader />
       ) : (
-        <>
+        <SelectedProductsContainer>
         <Title textTitle="Selected products!" />
         <CardsContainer>
           {selected.map((product) => (
@@ -50,7 +49,7 @@ const HomePage = () => {
             </div>
           ))}
         </CardsContainer>
-        </>
+        </SelectedProductsContainer>
       )}
     </Layout>
   );

@@ -20,7 +20,7 @@ export const IDContainer = styled.div`
   width: 35%;
   align-items: flex-start;
   padding: 2em;
-  font-family: var(--font-family-title);
+  font-family: ${(props) => props.theme.fonts.title};
 
   @media (max-width: 768px) {
     width: 100%;
@@ -53,13 +53,13 @@ export const ItemDetailSize = styled.span`
 
 export const ItemDetailSizeSpan = styled.span`
   margin: 0 0.4em 0 0;
-  background-color: var(--dark-gray);
-  color: var(--dark-golden);
+  background-color: ${(props) => props.theme.colors.darkGray};
+  color: ${(props) => props.theme.colors.darkGolden};
   padding: 0.5em 0.8em;
 
   &:hover {
     cursor: pointer;
-    background-color: var(--dark-golden);
-    color: var(--dark-gray);
+    background-color: ${(props) => props.theme.colors.darkGolden};
+    color: ${(props) => props.theme.colors.darkGray};
   }
 `;

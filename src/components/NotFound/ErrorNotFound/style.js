@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ErrorNotFoundContainer = styled.div`
+export const ErrorNotFoundContainer = styled.main`
   width: 100%;
   display: grid;
   place-content: center;

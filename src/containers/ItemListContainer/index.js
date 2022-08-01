@@ -9,7 +9,7 @@ import Filter from "../../common/Filter";
 import Loader from "../../helpers/Loader";
 
 // Toastify
-import { Wrapper } from "./ItemListContainer.styles";
+import { Wrapper } from "./style";
 import { ToastContainer, toast } from "react-toastify";
 import { Layout } from "../../Layout/Layout";
 import { getCategories, getProducts } from "../../services/GetProducts";

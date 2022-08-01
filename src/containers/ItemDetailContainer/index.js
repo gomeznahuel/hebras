@@ -43,8 +43,6 @@ const ItemDetailContainer = () => {
           setProduct(productDetail);
           setIsProductAvailable(true);
         } else {
-          // console.log("No such document!");
-          // notify("Product not found!");
           setIsProductAvailable(false);
         }
         setIsLoading(false);
@@ -61,7 +59,6 @@ const ItemDetailContainer = () => {
         <Loader />
       ) : (
         <>
-          {/* <ItemDetail product={product} /> */}
           {isProductAvailable ? (
             <ItemDetail product={product} />
           ) : (

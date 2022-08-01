@@ -4,8 +4,8 @@ export const LogoContainer = styled.div`
   display: flex;
   align-items: center;
   font-size: 3rem;
-  font-family: var(--font-family-title);
-  color: var(--dark-golden);
+  font-family: ${(props) => props.theme.fonts.title};
+  color: ${(props) => props.theme.colors.darkGolden};
 
   &:hover {
     cursor: pointer;

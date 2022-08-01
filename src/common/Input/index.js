@@ -1,4 +1,4 @@
-import { InputContainer } from "./Input.style"
+import { InputContainer } from "./style"
 
 export const Input = ({ type, placeholder, value, onChange, onClick }) => {
   return <InputContainer type={type} placeholder={placeholder}  value={value} onChange={onChange} onClick={onClick} />

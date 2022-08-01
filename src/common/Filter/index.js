@@ -1,4 +1,4 @@
-import { FilterContainer, CategoryFilter, CategoryFilterUL, CategoryFilterLI } from "./Filter.style";
+import { FilterContainer, CategoryFilter, CategoryFilterUL, CategoryFilterLI } from "./style";
 import { NavLink } from "react-router-dom";
 
 const Filter = ({ categories }) => {

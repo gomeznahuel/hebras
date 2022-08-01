@@ -1,5 +1,5 @@
 import Navbar from "../Navbar";
-import { Container } from "./Header.styles";
+import { Container } from "./style";
 
 const Header = () => {
   return (

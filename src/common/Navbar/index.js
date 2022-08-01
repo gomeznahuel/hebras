@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Wrapper, Menu, MenuItem, MenuItemCartWrapper, MobileIcon } from "./Navbar.styles";
+import { Wrapper, Menu, MenuItem, MenuItemCartWrapper, MobileIcon } from "./style";
 import { VscThreeBars, VscClose } from "react-icons/vsc";
 import { menuNavigation } from "../../helpers/Data";
 import { NavLink } from "react-router-dom";

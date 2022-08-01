@@ -13,7 +13,7 @@ export const Menu = styled.ul`
   justify-content: space-between;
   align-items: center;
   z-index: 2;
-  background-color: var(--dark-gray);
+  background-color: ${(props) => props.theme.colors.darkGray};
 
   @media screen and (max-width: 960px) {
     position: absolute;
@@ -39,13 +39,13 @@ export const MenuItem = styled.li`
     padding: 0.5em 2.4rem;
     font-size: 1.8rem;
     transition: 0.5s all ease;
-    font-family: var(--font-family-body);
+    font-family: ${(props) => props.theme.fonts.body};
     cursor: pointer;
     border-radius: 1em;
     color: var(--dark-golden);
 
     &:hover {
-      color: var(--text-hover);
+      color: ${(props) => props.theme.colors.textHover};
       transition: 0.5s all ease;
     }
   }
@@ -72,8 +72,8 @@ export const MenuItemCartWrapper = styled.li`
     height: 100%;
     font-size: 1.8rem;
     transition: 0.5s all ease;
-    font-family: var(--font-family-body);
-    color: var(--text-color);
+    font-family: ${(props) => props.theme.fonts.body};
+    color: ${(props) => props.theme.colors.textHover};
     cursor: pointer;
     margin-left: 1em;
 
@@ -97,7 +97,7 @@ export const MobileIcon = styled.div`
     cursor: pointer;
 
     svg {
-      fill: var(--dark-golden);
+      fill: ${(props) => props.theme.colors.darkGolden};
       margin-right: 0.5rem;
       font-size: 4em;
     }

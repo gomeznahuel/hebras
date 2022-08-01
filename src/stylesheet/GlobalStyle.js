@@ -32,20 +32,11 @@ html {
 
 body {
   overflow-x: hidden;
-    height: 100vh;
+  height: 100vh;
 }
 
 main {
   flex-grow: 1;
-}
-
-:root {
-  --font-family-title: "Merriweather";
-  --font-family-body: "Varela Round";
-  --dark-gray: #121212;
-  --dark-blue: #050B23;
-  --dark-golden: #BFA37E;
-  --text-hover: #f5f5f5;
 }
 
 @media (max-width: 768px) {

@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import Button from "../../../common/Button";
-import { ProductNotFoundContainer } from "./index.style";
+import { ProductNotFoundContainer } from "./style";
 
 export const ProductNotFound = () => {
   return (

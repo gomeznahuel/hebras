@@ -1,4 +1,4 @@
-import { ItemCountContainer, CountContainer, Count } from "./ItemCount.styles.js";
+import { ItemCountContainer, CountContainer, Count } from "./style";
 import useCounter from "../../hooks/useCounter.js";
 import Button from "../../common/Button";
 

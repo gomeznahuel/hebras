@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { ErrorNotFoundContainer, ErrorNotFoundAnimation } from "./ErrorNotFound.styles";
+import { ErrorNotFoundContainer, ErrorNotFoundAnimation } from "./style";
 import lottie from "lottie-web";
 import Button from "../../../common/Button";
 

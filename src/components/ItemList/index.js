@@ -1,4 +1,4 @@
-import { ItemListWrapper } from "./ItemList.styles";
+import { ItemListWrapper } from "./style";
 import Item from "../Item";
 
 const ItemList = ({ products }) => {

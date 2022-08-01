@@ -30,6 +30,8 @@ If you prefer to run locally, follow these steps:
 | Firebase          | https://firebase.google.com                  |
 | Lottie Files      | https://lottiefiles.com                      |
 | Responsive Carousel      | https://www.npmjs.com/package/react-responsive-carousel                      |
+| Formik            | https://formik.org/                          |
+| Yup               | https://github.com/jquense/yup               |
 
 ## Development information
 

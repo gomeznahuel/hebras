@@ -1,4 +1,4 @@
-import { ButtonContainer } from "./Button.styles";
+import { ButtonContainer } from "./style";
 
 const Button = ({ type, textButton, handleClick, placeholder, width, height, margin, padding, fontSize, disabled }) => {;
   return (

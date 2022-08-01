@@ -1,5 +1,5 @@
 import { BsCart3 } from "react-icons/bs";
-import { Container } from "./CartWidget.styles";
+import { Container } from "./style";
 import { NavLink } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
 import { useContext } from "react";

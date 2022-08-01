@@ -8,8 +8,8 @@ export const CartEmptyContainer = styled.div`
 `;
 
 export const CartEmpty = styled.h1`
-  font-family: var(--font-family-title);
-  color: var(--dark-golden);
+  font-family: ${(props) => props.theme.fonts.title};
+  color: ${(props) => props.theme.colors.darkGolden};
   text-align: center;
   margin: 1em auto;
 `;

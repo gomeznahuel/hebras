@@ -6,16 +6,16 @@ export const FilterContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 1em 2em;
-  font-family: var(--font-family-body);
+  font-family: ${(props) => props.theme.fonts.body};
   font-size: 1.6rem;
-  color: var(--text-color);
+  color: ${(props) => props.theme.colors.darkGray};
   background-color: rgba(128, 128, 128, 0.377);
 `;
 
 export const CategoryFilter = styled.div`
   width: 40%;
 
-  @media (max-width: 576px) {
+  @media (max-width: 992px) {
     width: 100%;
   }
 `;
@@ -36,7 +36,7 @@ export const CategoryFilterLI = styled.li`
 
   a {
     text-decoration: none;
-    color: var(--text-color);
+    color: ${(props) => props.theme.colors.darkGray};
   }
 `;
 
@@ -65,9 +65,8 @@ export const NavigationContent = styled.div`
     color: black;
 
     &:hover {
-      border-left: 2px solid var(--text-color);
+      border-left: 2px solid ${(props) => props.theme.colors.darkGray};
       padding-left: 0.5rem;
-      /* margin-left: 0.5rem; */
     }
   }
 `;
@@ -79,7 +78,6 @@ export const Navigation = styled.div`
   &:hover {
     & ${NavigationContent} {
       display: block;
-      background-color: white;
       box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
       border-radius: 4px;
       display: flex;
@@ -91,12 +89,11 @@ export const Navigation = styled.div`
         font-weight: 400;
         font-size: 1.4rem;
         line-height: 2.2rem;
-        font-family: "Saira", sans-serif;
         color: #737380;
         margin-bottom: 0.4rem;
         cursor: pointer;
-        color: var(--text-color);
-        font-family: var(--font-family-body);
+        color: ${(props) => props.theme.colors.darkGray};
+        font-family: ${(props) => props.theme.fonts.body};
       }
     }
   }

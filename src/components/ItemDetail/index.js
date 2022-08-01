@@ -1,7 +1,7 @@
 import { toast } from "react-toastify";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Wrapper, IDContainer, ItemDetailTitle, ItemDetailSpan, ItemDetailSize, ItemDetailSizeSpan } from "./ItemDetail.styles";
+import { Wrapper, IDContainer, ItemDetailTitle, ItemDetailSpan, ItemDetailSize, ItemDetailSizeSpan } from "./style";
 import { Currency } from "../../helpers/Currency";
 import Image from '../Image';
 

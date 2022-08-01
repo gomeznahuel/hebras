@@ -4,6 +4,6 @@ export const Wrapper = styled.div`
   width: 100%;
   text-align: center;
   font-size: 1.2rem;
-  font-family: var(--font-family-title);
+  font-family: ${(props) => props.theme.fonts.body};
   padding: 2em;
 `;

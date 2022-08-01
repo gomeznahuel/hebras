@@ -1,4 +1,4 @@
-import { ItemContainer, ItemTitle, ItemPrice } from "./Item.styles";
+import { ItemContainer, ItemTitle, ItemPrice } from "./style";
 import { useNavigate } from "react-router-dom";
 import { Currency } from "../../helpers/Currency";
 import Button from "../../common/Button";

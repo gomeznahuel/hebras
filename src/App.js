@@ -1,4 +1,4 @@
-import { AppRouter } from "./Router";
+import { AppRouter } from "./router";
 import { BrowserRouter } from "react-router-dom";
 import { Providers } from "./helpers/Providers";
 import CartProvider from "./context/CartContext";
