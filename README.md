@@ -41,7 +41,7 @@ If you prefer to run locally, follow these steps:
 * **Category** *("/category/:categoryId")*: It renders the products of the category.
 * **Item** *("/item/:productId")*: Render a card with the details of the selected product (name, description, image, stock). It also has a button available that is responsible for adding a certain amount of the product to the cart, once the product is added, another button is rendered that redirects the user to their shopping cart.
 * **Cart** *("/cart")*: Shows the shopping cart with the products added by the user. If no product was added, it renders the CartEmpty component which returns a "No products" notice.
-* **Order** *("/order")*: It renders a form to generate an order in the database, when submitting the form if all the fields are correct, it renders a poster with the ID of the generated order.
+* **Order** *("/checkout")*: It renders a form to generate an order in the database, when submitting the form if all the fields are correct, it renders a poster with the ID of the generated order.
 
 ## Authors
 

@@ -28,7 +28,7 @@ const Navbar = () => {
           </MenuItem>
         ))}
 
-        <MenuItemCartWrapper onClick={() => setShowMobileMenu(!showMobileMenu)}>
+        <MenuItemCartWrapper onClick={() => setShowMobileMenu(false)}>
           {cart.length > 0 ? <CartWidget /> : null}
         </MenuItemCartWrapper>
       </Menu>

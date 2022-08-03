@@ -1,37 +1,59 @@
 import { CartContext } from "../../context/CartContext";
-import GeneratedOrder from "../../utils/GenerateOrder";
-import SaveOrder from "../../utils/SaveOrder";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Layout } from "../../Layout/Layout";
 import { Form } from "../../components/Form/Form";
+import { useFormik } from "formik";
+import { validations } from "../../utils/validations";
+import GeneratedOrder from "../../utils/GenerateOrder";
+import Loader from "../../helpers/Loader";
+import SaveOrder from "../../utils/SaveOrder";
 
 export const FormContainer = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [idGenerated, setIdGenerated] = useState(null);
   const { cart, clearCart, totalPrice } = useContext(CartContext);
 
-  const [buyer, setBuyer] = useState({
-    name: "",
-    phone: "",
-    email: "",
+  // Formik with the buyer object
+  const formik = useFormik({
+    initialValues: {
+      name: "",
+      phone: "",
+      email: "",
+    },
+    validate: validations,
+    onSubmit: (values) => {
+      setIsLoading(true);
+      confirmOrder(values);
+      formik.resetForm();
+    },
   });
 
-  const confirmOrder = async () => {
-    const order = GeneratedOrder(buyer, cart, totalPrice());
-    SaveOrder(cart, order);
+    const confirmOrder = (values) => {
+    const order = GeneratedOrder(values, cart, totalPrice());
+    SaveOrder(cart, order, setIdGenerated);
     clearCart();
   };
 
-  const handleChange = (e) => {
-    setBuyer({ ...buyer, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    confirmOrder();
-  };
+  useEffect(() => {
+    if (idGenerated) {
+      setIsLoading(false);
+    }
+  }, [idGenerated]);
 
   return (
-    <Layout>
-      <Form handleChange={handleChange} handleSubmit={handleSubmit} buyer={buyer} confirmOrder={confirmOrder} />
-    </Layout>
+    <>
+      {!isLoading && idGenerated === null ? (
+        <Form formik={formik} />
+      ) : isLoading && idGenerated === null ? (
+        <Layout><Loader /></Layout>        
+      ) : ( 
+        <Layout><h1> Su pedido ha sido generado con éxito. Su número de pedido es: {idGenerated}</h1></Layout>
+      )}
+    </> 
   );
-};
+}
+
+
+
+
+
