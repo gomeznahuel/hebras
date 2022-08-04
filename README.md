@@ -20,18 +20,17 @@ If you prefer to run locally, follow these steps:
     
 ## Technologies used
 
-| Name              | Link                                         |
-| ----------------- | -------------------------------------------- |
-| Styled Components | https://styled-components.com                |
-| React Icons       | https://react-icons.github.io/react-icons    |
-| Axios             | https://axios-http.com                       |
-| React Spinners    | https://www.npmjs.com/package/react-spinners |
-| React Toastify    | https://www.npmjs.com/package/react-toastify |
-| Firebase          | https://firebase.google.com                  |
-| Lottie Files      | https://lottiefiles.com                      |
-| Responsive Carousel      | https://www.npmjs.com/package/react-responsive-carousel                      |
-| Formik            | https://formik.org/                          |
-| Yup               | https://github.com/jquense/yup               |
+| Name                      | Link                                                    |
+| ------------------------- | ------------------------------------------------------- |
+| Styled Components         | https://styled-components.com                           |
+| React Icons               | https://react-icons.github.io/react-icons               |
+| Axios                     | https://axios-http.com                                  |
+| React Spinners            | https://www.npmjs.com/package/react-spinners            |
+| React Toastify            | https://www.npmjs.com/package/react-toastify            |
+| Firebase                  | https://firebase.google.com                             |
+| Lottie Files              | https://lottiefiles.com                                 |
+| Responsive Carousel       | https://www.npmjs.com/package/react-responsive-carousel |
+| React Hook Form           | https://react-hook-form.com                             |
 
 ## Development information
 

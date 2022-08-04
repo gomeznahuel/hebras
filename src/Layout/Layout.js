@@ -1,4 +1,4 @@
-import { LayoutContainer } from "./Layout.styles";
+import { LayoutContainer } from "./style";
 import { useContext } from "react";
 import { NavbarContext } from "../context/NavbarContext";
 

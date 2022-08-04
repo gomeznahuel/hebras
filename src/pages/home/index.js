@@ -23,7 +23,7 @@ const HomePage = () => {
         setLoading(false);
       });
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   }, [setSelected]);
 
@@ -37,13 +37,13 @@ const HomePage = () => {
         <SelectedProductsContainer>
         <Title textTitle="Selected products!" />
         <CardsContainer>
-          {selected.map((product) => (
-            <div key={product.id}>
-              {product.selected ? (
+          {selected.map(({ id, name, title, image, selected}) => (
+            <div key={id}>
+              {selected ? (
                 <Card>
-                  <Title textTitle={product.title.toUpperCase()} margin={".4em 0 .2em 0"} fontSize={"2rem"} />
-                  <Image src={product.image} alt={product.name} maxWidth="55%" />
-                  <NavLink to={`/item/${product.id}`}><Button textButton="View product" /></NavLink>
+                  <Title textTitle={title.toUpperCase()} margin={".4em 0 .2em 0"} fontSize={"2rem"} />
+                  <Image src={image} alt={name} maxWidth="55%" />
+                  <NavLink to={`/item/${id}`}><Button textButton="View product" /></NavLink>
                 </Card>
               ) : null}
             </div>

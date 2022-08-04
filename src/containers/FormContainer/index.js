@@ -2,36 +2,35 @@ import { CartContext } from "../../context/CartContext";
 import { useContext, useEffect, useState } from "react";
 import { Layout } from "../../Layout/Layout";
 import { Form } from "../../components/Form/Form";
-import { useFormik } from "formik";
-import { validations } from "../../utils/validations";
 import GeneratedOrder from "../../utils/GenerateOrder";
 import Loader from "../../helpers/Loader";
 import SaveOrder from "../../utils/SaveOrder";
 
 export const FormContainer = () => {
+
+  const { cart, clearCart, totalPrice } = useContext(CartContext);
   const [isLoading, setIsLoading] = useState(false);
   const [idGenerated, setIdGenerated] = useState(null);
-  const { cart, clearCart, totalPrice } = useContext(CartContext);
-
-  // Formik with the buyer object
-  const formik = useFormik({
-    initialValues: {
-      name: "",
-      phone: "",
-      email: "",
-    },
-    validate: validations,
-    onSubmit: (values) => {
-      setIsLoading(true);
-      confirmOrder(values);
-      formik.resetForm();
-    },
+  const [buyer, setBuyer] = useState({
+    name: "",
+    phone: "",
+    email: "",
   });
 
-    const confirmOrder = (values) => {
-    const order = GeneratedOrder(values, cart, totalPrice());
+  const confirmOrder = async () => { // ex confirmOrder
+
+    setIsLoading(true);
+    const order = GeneratedOrder(buyer, cart, totalPrice());
     SaveOrder(cart, order, setIdGenerated);
     clearCart();
+  };
+
+  const handleChange = (e) => {
+    setBuyer({ ...buyer, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmitt = async () => {
+    await confirmOrder();
   };
 
   useEffect(() => {
@@ -43,7 +42,7 @@ export const FormContainer = () => {
   return (
     <>
       {!isLoading && idGenerated === null ? (
-        <Form formik={formik} />
+        <Form handleChange={handleChange} buyer={buyer} handleSubmitt={handleSubmitt} confirmOrder={confirmOrder} />
       ) : isLoading && idGenerated === null ? (
         <Layout><Loader /></Layout>        
       ) : ( 

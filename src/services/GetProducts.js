@@ -14,7 +14,7 @@ export const getProducts = async (categoryId) => {
     });
     return products;
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };
 
@@ -27,6 +27,6 @@ export const getCategories = async () => {
     });
     return categories;
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };

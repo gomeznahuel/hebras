@@ -4,6 +4,7 @@ const useCounter = (initialCount) => {
   const [count, setCount] = useState(initialCount);
 
   class Counter {
+
     constructor(count) {
       this.count = count;
     }

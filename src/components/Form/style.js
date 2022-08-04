@@ -11,7 +11,7 @@ export const FormContainer = styled.main`
 `;
 
 export const FormWrapper = styled.form`
-  width: 30%;
+  min-width: 40%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,6 +20,19 @@ export const FormWrapper = styled.form`
   padding: 2em;
   border-radius: 5px;
   background-color: ${(props) => props.theme.colors.darkGray};
+
+  @media (max-width: 476px) {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  input {
+    width: 100%;
+    padding: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 1em 0;
+  }
 
   button {
     margin-top: 1em;
@@ -32,11 +45,10 @@ export const FormWrapper = styled.form`
   }
 `;
 
-
 export const ErrorDiv = styled.div`
   width: 100%;
   color: red;
   font-size: 2em;
   text-align: center;
-  font-family: ${(props) => props.theme.fonts.title};
+  font-family: ${(props) => props.theme.fonts.body};
 `;

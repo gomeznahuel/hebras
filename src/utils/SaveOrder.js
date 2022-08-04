@@ -26,7 +26,7 @@ const SaveOrder = (cart, orden, setIdGenerated) => {
 
   // If cart is empty, return log with error
   if (cart.length === 0) {
-    console.log("Cart is empty");
+    alert("Your cart is empty");
     return;
   } else if (outOfStock.length === 0) {
     // From here we can save the order
@@ -34,18 +34,17 @@ const SaveOrder = (cart, orden, setIdGenerated) => {
       .then(({ id }) => {
         batch.commit().then(() => {
           setIdGenerated(id);
-          console.log("Order saved");
         });
       })
       .catch((err) => {
-        console.log(err);
+        alert(err);
       });
   } else {
     let mensaje = "";
     for (const producto of outOfStock) {
       mensaje += `${producto.title}`;
     }
-    console.log(
+    alert(
       `No hay stock suficiente para los siguientes productos: ${mensaje}`
     );
   }
