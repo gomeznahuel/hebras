@@ -1,34 +1,41 @@
 import { FormContainer, FormWrapper, ErrorDiv } from "./style";
-import Button from '../../common/Button';
 import { useForm } from "react-hook-form";
+import { yupResolver } from '@hookform/resolvers/yup'
+import { formSchema } from '../../utils/validations'
+import Button from '../../common/Button';
 
 export const Form = ({ handleChange, handleSubmitt, buyer, cart }) => {
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const formOptions = { resolver: yupResolver(formSchema) };
+  
+  const { register, handleSubmit, formState } = useForm(formOptions);
+  const { errors: formErrors } = formState;
   const { name, phone, email } = buyer;
 
   return (
     <FormContainer>
+      {cart.length === 0 ? (
+        <p>No hay productos en el carrito, para poder realizar una compra debe agregar al menos un producto.</p>
+      ) : (
       <FormWrapper onSubmit={handleSubmit(handleSubmitt)}>
         <input placeholder="Nombre" name="name" type="text" value={name} {...register("name", { minLength: 3, maxLength: 20, required: true })} onChange={handleChange} />
-        {errors.name && <ErrorDiv>El nombre es requerido.</ErrorDiv>}
-        {errors.name && errors.name.type === "minLength" && <ErrorDiv>El nombre debe tener al menos 3 caracteres.</ErrorDiv>}
-        {errors.name && errors.name.type === "maxLength" && <ErrorDiv>El nombre debe tener máximo 20 caracteres.</ErrorDiv>}
+        {formErrors.name && <ErrorDiv>{formErrors.name.message}.</ErrorDiv>}
 
+        <input placeholder="Apellido" name="surname" type="text" value={buyer.surname} {...register("surname", { minLength: 3, maxLength: 20, required: true })} onChange={handleChange} />
+        {formErrors.surname && <ErrorDiv>{formErrors.surname.message}.</ErrorDiv>}
+        
         <input placeholder="Phone" name="phone" type="number" value={phone} {...register("phone", { maxLength: 16, minLength: 8, required: true })} onChange={handleChange} />
-        {errors.phone && <ErrorDiv>El teléfono es requerido.</ErrorDiv>}
-        {errors.phone && errors.phone.type === "minLength" && <ErrorDiv>El teléfono debe tener al menos 8 caracteres.</ErrorDiv>}
-        {errors.phone && errors.phone.type === "maxLength" && <ErrorDiv>El teléfono debe tener máximo 10 caracteres.</ErrorDiv>}
-
+        {formErrors.phone && <ErrorDiv>{formErrors.phone.message}.</ErrorDiv>}
+        
         <input placeholder="Email" name="email" type="email" value={email} {...register("email", { maxLength: 20, minLength: 3, required: true })} onChange={handleChange} />
-        {errors.email && <ErrorDiv>El email es requerido</ErrorDiv>}
-        {errors.email && errors.email.type === "minLength" && <ErrorDiv>El email debe tener al menos 3 caracteres.</ErrorDiv>}
-        {errors.email && errors.email.type === "maxLength" && <ErrorDiv>El email debe tener máximo 32 caracteres.</ErrorDiv>}
+        {formErrors.email && <ErrorDiv>{formErrors.email.message}.</ErrorDiv>}
 
-        {/* Input => nombre, apellido, teléfono, email, confirm email. */}
-        {/* GiF archive */}
+        <input placeholder="Confirm Email" name="confirmEmail" type="email" {...register("confirmEmail", { maxLength: 20, minLength: 3, required: true })} onChange={handleChange} />
+        {formErrors.confirmEmail && <ErrorDiv>{formErrors.confirmEmail.message}.</ErrorDiv>}
 
         <Button width={"fit-content"} height={"3em"} textButton="Confirm order" type="submit" disabled={cart.length === 0} />
+        
       </FormWrapper>
+      )}
     </FormContainer>
   );
 };

@@ -18,8 +18,10 @@ export const FormContainer = () => {
   const [isEmpty, setIsEmpty] = useState(false);
   const [buyer, setBuyer] = useState({
     name: "",
+    surname: "",
     phone: "",
     email: "",
+    // confirmEmail: "",
   });
 
   const confirmOrder = async () => {
