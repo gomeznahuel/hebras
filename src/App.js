@@ -1,8 +1,8 @@
 import { AppRouter } from "./router";
 import { BrowserRouter } from "react-router-dom";
 import { Providers } from "./helpers/Providers";
-import CartProvider from "./context/CartContext";
-import NavbarProvider from "./context/NavbarContext";
+import CartProvider from "./context/cart/CartProvider";
+import NavbarProvider from "./context/navbar/NavbarContext";
 import Header from "./common/Header";
 import Footer from "./common/Footer";
 

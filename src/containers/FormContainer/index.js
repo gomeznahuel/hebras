@@ -1,27 +1,31 @@
-import { CartContext } from "../../context/CartContext";
+import { CartContext } from "../../context/cart/CartContext";
 import { useContext, useEffect, useState } from "react";
 import { Layout } from "../../Layout/Layout";
-import { Form } from "../../components/Form/Form";
+import { Form } from "../../components/Form";
 import GeneratedOrder from "../../utils/GenerateOrder";
 import Loader from "../../helpers/Loader";
 import SaveOrder from "../../utils/SaveOrder";
+import { Title, CopyContainer, Order, OrderID, BackToShop } from "./style";
+import { CopyToClipboard } from "react-copy-to-clipboard";
+import Button from "../../common/Button";
+import { NavLink } from "react-router-dom";
+import { notifySuccess } from "../../helpers/Notify";
 
 export const FormContainer = () => {
-
   const { cart, clearCart, totalPrice } = useContext(CartContext);
   const [isLoading, setIsLoading] = useState(false);
   const [idGenerated, setIdGenerated] = useState(null);
+  const [isEmpty, setIsEmpty] = useState(false);
   const [buyer, setBuyer] = useState({
     name: "",
     phone: "",
     email: "",
   });
 
-  const confirmOrder = async () => { // ex confirmOrder
-
+  const confirmOrder = async () => {
     setIsLoading(true);
     const order = GeneratedOrder(buyer, cart, totalPrice());
-    SaveOrder(cart, order, setIdGenerated);
+    SaveOrder(cart, order, setIdGenerated, setIsEmpty);
     clearCart();
   };
 
@@ -41,18 +45,37 @@ export const FormContainer = () => {
 
   return (
     <>
-      {!isLoading && idGenerated === null ? (
-        <Form handleChange={handleChange} buyer={buyer} handleSubmitt={handleSubmitt} confirmOrder={confirmOrder} />
+      {(!isLoading && idGenerated === null) || isEmpty ? (
+        <Form handleChange={handleChange} buyer={buyer} handleSubmitt={handleSubmitt} confirmOrder={confirmOrder} cart={cart} />
       ) : isLoading && idGenerated === null ? (
-        <Layout><Loader /></Layout>        
-      ) : ( 
-        <Layout><h1> Su pedido ha sido generado con éxito. Su número de pedido es: {idGenerated}</h1></Layout>
+        <Layout><Loader /></Layout>
+      ) : (
+        <Layout>
+          <Order>
+            <Title>¡Su pedido ha sido generado con éxito!</Title>
+
+            <>
+              {idGenerated && (
+                <CopyContainer>
+                  <OrderID>
+                    {idGenerated}
+                  </OrderID>
+                  <CopyToClipboard text={idGenerated} onCopy={() => notifySuccess("Copiado al portapapeles")}>
+                    <OrderID>
+                      <Button textButton="Copiar al portapapeles" />
+                    </OrderID>
+                  </CopyToClipboard>
+                </CopyContainer>
+              )}
+            </>
+          </Order>
+          <BackToShop>
+            <NavLink to="/products">
+              <Button textButton="Volver a la tienda" />
+            </NavLink>
+          </BackToShop>
+        </Layout>
       )}
-    </> 
+    </>
   );
 }
-
-
-
-
-

@@ -5,12 +5,10 @@ import { menuNavigation } from "../../helpers/Data";
 import { NavLink } from "react-router-dom";
 import CartWidget from "../../components/CartWidget";
 import Logo from "../../components/Logo";
-import { NavbarContext } from "../../context/NavbarContext";
-import { CartContext } from "../../context/CartContext";
+import { NavbarContext } from "../../context/navbar/NavbarContext";
 
 const Navbar = () => {
   const { showMobileMenu, setShowMobileMenu } = useContext(NavbarContext);
-  const { cart } = useContext(CartContext);
 
   return (
     <Wrapper>
@@ -29,7 +27,7 @@ const Navbar = () => {
         ))}
 
         <MenuItemCartWrapper onClick={() => setShowMobileMenu(false)}>
-          {cart.length > 0 ? <CartWidget /> : null}
+          {<CartWidget />}
         </MenuItemCartWrapper>
       </Menu>
     </Wrapper>

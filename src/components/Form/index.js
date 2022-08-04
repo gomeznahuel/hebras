@@ -2,7 +2,7 @@ import { FormContainer, FormWrapper, ErrorDiv } from "./style";
 import Button from '../../common/Button';
 import { useForm } from "react-hook-form";
 
-export const Form = ({ handleChange, handleSubmitt, buyer }) => {
+export const Form = ({ handleChange, handleSubmitt, buyer, cart }) => {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const { name, phone, email } = buyer;
 
@@ -24,7 +24,10 @@ export const Form = ({ handleChange, handleSubmitt, buyer }) => {
         {errors.email && errors.email.type === "minLength" && <ErrorDiv>El email debe tener al menos 3 caracteres.</ErrorDiv>}
         {errors.email && errors.email.type === "maxLength" && <ErrorDiv>El email debe tener máximo 32 caracteres.</ErrorDiv>}
 
-        <Button width={"fit-content"} height={"3em"} textButton="Confirm order" type="submit" />
+        {/* Input => nombre, apellido, teléfono, email, confirm email. */}
+        {/* GiF archive */}
+
+        <Button width={"fit-content"} height={"3em"} textButton="Confirm order" type="submit" disabled={cart.length === 0} />
       </FormWrapper>
     </FormContainer>
   );

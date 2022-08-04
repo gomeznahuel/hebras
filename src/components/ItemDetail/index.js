@@ -1,19 +1,19 @@
 import { toast } from "react-toastify";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Wrapper, IDContainer, ItemDetailTitle, ItemDetailSpan, ItemDetailSize, ItemDetailSizeSpan } from "./style";
+import { Wrapper, IDContainer, ItemDetailTitle, ItemDetailSpan } from "./style";
 import { Currency } from "../../helpers/Currency";
 import Image from '../Image';
 
 import Button from "../../common/Button";
 import ItemCount from "../ItemCount";
 
-import { CartContext } from "../../context/CartContext";
+import { CartContext } from "../../context/cart/CartContext";
 
 const ItemDetail = ({ product }) => {
   const [showCount, setShowCount] = useState(true);
   const [quantity, setQuantity] = useState(1);
-  const { title, price, description, image, category, size } = product;
+  const { title, price, description, image, category } = product;
 
   // Context
   const { addItem } = useContext(CartContext);
@@ -46,7 +46,6 @@ const ItemDetail = ({ product }) => {
           <ItemDetailTitle>{title.toUpperCase()}</ItemDetailTitle>
           <ItemDetailSpan>{Currency(price)}</ItemDetailSpan>
           <ItemDetailSpan>{description}</ItemDetailSpan>
-          <ItemDetailSize>{size.map((t, index) => {return <ItemDetailSizeSpan key={index}>{t}</ItemDetailSizeSpan>})}</ItemDetailSize>
           <ItemDetailSpan>Category: {category}</ItemDetailSpan>
         {showCount ? (
           <ItemCount stock={product.stock} initialCount={quantity} onAdd={onAdd} />

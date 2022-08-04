@@ -1,7 +1,8 @@
 import { addDoc, collection, doc, getDoc, writeBatch } from "firebase/firestore";
 import { firestoreDb } from "../firebase/config";
+import { notifyError } from "../helpers/Notify";
 
-const SaveOrder = (cart, orden, setIdGenerated) => {
+const SaveOrder = (cart, orden, setIdGenerated, setIsEmpty) => {
   const batch = writeBatch(firestoreDb);
   const outOfStock = [];
 
@@ -26,27 +27,26 @@ const SaveOrder = (cart, orden, setIdGenerated) => {
 
   // If cart is empty, return log with error
   if (cart.length === 0) {
-    alert("Your cart is empty");
-    return;
+    notifyError("El carrito está vacío");
+    setIsEmpty(true);
+    return null;
   } else if (outOfStock.length === 0) {
     // From here we can save the order
     addDoc(collection(firestoreDb, "orders"), orden)
       .then(({ id }) => {
         batch.commit().then(() => {
-          setIdGenerated(id);
+          setIdGenerated(id); //
         });
       })
       .catch((err) => {
-        alert(err);
+        notifyError(err.message);
       });
   } else {
     let mensaje = "";
     for (const producto of outOfStock) {
       mensaje += `${producto.title}`;
     }
-    alert(
-      `No hay stock suficiente para los siguientes productos: ${mensaje}`
-    );
+    notifyError(`${mensaje} no hay suficiente stock`);
   }
 };
 

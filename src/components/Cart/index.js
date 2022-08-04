@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { TableTD, TableTR } from "./style";
 import Image from "../../components/Image";
 import { Currency } from "../../helpers/Currency";
-import { CartContext } from "../../context/CartContext";
+import { CartContext } from "../../context/cart/CartContext";
 import Button from "../../common/Button";
 
 export const Cart = ({ id, title, image, quantity }) => {

@@ -1,6 +1,6 @@
 import { LayoutContainer } from "./style";
 import { useContext } from "react";
-import { NavbarContext } from "../context/NavbarContext";
+import { NavbarContext } from "../context/navbar/NavbarContext";
 
 export const Layout = ({ children }) => {
   const { showMobileMenu } = useContext(NavbarContext);

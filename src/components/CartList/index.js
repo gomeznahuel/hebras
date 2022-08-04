@@ -3,7 +3,7 @@ import { Currency } from "../../helpers/Currency";
 import { Cart } from "../../components/Cart";
 import { renderCartItems } from "../../helpers/Data";
 import { useContext } from "react";
-import { CartContext } from "../../context/CartContext";
+import { CartContext } from "../../context/cart/CartContext";
 import { useNavigate } from "react-router-dom";
 import Button from "../../common/Button";
 

@@ -41,25 +41,3 @@ export const ItemDetailSpan = styled.span`
   margin-bottom: 1em;
   width: 80%;
 `;
-
-export const ItemDetailSize = styled.span`
-  font-size: 1.5rem;
-  margin-bottom: 1em;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-`;
-
-export const ItemDetailSizeSpan = styled.span`
-  margin: 0 0.4em 0 0;
-  background-color: ${(props) => props.theme.colors.darkGray};
-  color: ${(props) => props.theme.colors.darkGolden};
-  padding: 0.5em 0.8em;
-
-  &:hover {
-    cursor: pointer;
-    background-color: ${(props) => props.theme.colors.darkGolden};
-    color: ${(props) => props.theme.colors.darkGray};
-  }
-`;
