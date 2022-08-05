@@ -2,6 +2,8 @@
 
 This app is a shopping cart. It was used to build a friendly user experience with instant visual updates and scalable code in ecommerce applications.
 
+![](src/assets/gif/Animation.gif)
+
 ## Description
 
 The project consists of an ecommerce. It contains search filters by categories and you can access the details of each product. It is possible to add them to the cart and then complete the form to request the purchase. It delivers a unique sales ID.
