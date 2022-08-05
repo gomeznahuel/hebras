@@ -14,3 +14,9 @@ export const ProductNotFoundContainer = styled.div`
   color: #333;
   font-family: ${(props) => props.theme.fonts.title};
 `;
+
+export const TextHeading = styled.h1`
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+`;

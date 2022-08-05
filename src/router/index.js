@@ -1,12 +1,8 @@
 import { Route, Routes } from "react-router-dom";
-import { FormContainer } from "../containers/FormContainer";
-import ItemListContainer from "../containers/ItemListContainer";
-import ItemDetailContainer from "../containers/ItemDetailContainer";
 import ErrorNotFound from "../components/NotFound/ErrorNotFound";
-import Cart from "../containers/CartListContainer";
-import FaqPage from "../pages/faq";
-import ContactPage from "../pages/contact";
-import HomePage from "../pages/home";
+import {ItemListContainer, ItemDetailContainer, FormContainer, CartListContainer } from '../containers'; 
+
+import { HomePage, ContactPage, FaqPage} from '../pages'
 
 export const AppRouter = () => {
   return (
@@ -17,7 +13,7 @@ export const AppRouter = () => {
       <Route path="/contact" element={<ContactPage />} />
       <Route path="/category/:categoryId" element={<ItemListContainer />} />
       <Route path="/item/:productId" element={<ItemDetailContainer />} />
-      <Route path="/cart" element={<Cart />} />
+      <Route path="/cart" element={<CartListContainer />} />
       <Route path="/checkout" element={<FormContainer />} />
       <Route path="*" element={<ErrorNotFound />} />
     </Routes>

@@ -1,5 +1,6 @@
 import { getDocs, collection, query, where } from "firebase/firestore";
 import { firestoreDb } from "../firebase/config";
+import { notifyError } from "../helpers/Notify";
 
 // Get all products
 export const getProducts = async (categoryId) => {
@@ -14,19 +15,6 @@ export const getProducts = async (categoryId) => {
     });
     return products;
   } catch (error) {
-    console.error(error);
-  }
-};
-
-// Get all categories
-export const getCategories = async () => {
-  try {
-    const response = await getDocs(collection(firestoreDb, "categories"));
-    const categories = response.docs.map((cat) => {
-      return { id: cat.id, ...cat.data() };
-    });
-    return categories;
-  } catch (error) {
-    console.error(error);
+    notifyError(error);
   }
 };

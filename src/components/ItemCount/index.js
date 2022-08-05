@@ -1,6 +1,7 @@
-import { ItemCountContainer, CountContainer, Count } from "./style";
+import { ItemCountContainer, CountContainer, Count, OutOfStock } from "./style";
 import useCounter from "../../hooks/useCounter.js";
 import Button from "../../common/Button";
+import { NavLink } from "react-router-dom";
 
 const ItemCount = ({ stock, initialCount, onAdd }) => {
   const { count, counter } = useCounter(initialCount);
@@ -18,7 +19,10 @@ const ItemCount = ({ stock, initialCount, onAdd }) => {
         </ItemCountContainer>
       ) : (
         <ItemCountContainer>
-          <div>No hay stock</div>
+          <OutOfStock>Sin stock</OutOfStock>
+          <NavLink to="/products">
+            <Button textButton="Back to products" />
+          </NavLink>
         </ItemCountContainer>
       )}
     </>

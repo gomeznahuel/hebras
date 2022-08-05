@@ -1,11 +1,11 @@
 import { NavLink } from "react-router-dom";
 import Button from "../../../common/Button";
-import { ProductNotFoundContainer } from "./style";
+import { ProductNotFoundContainer, TextHeading } from "./style";
 
-export const ProductNotFound = () => {
+export const ProductNotFound = ({text}) => {
   return (
     <ProductNotFoundContainer>
-      <h1>Product not found!</h1>
+      <TextHeading>{text}</TextHeading>
       <NavLink to="/products">
         <Button textButton="Back to products" />
       </NavLink>

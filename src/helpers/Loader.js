@@ -1,5 +1,6 @@
 import { css } from "@emotion/react";
 import FadeLoader from "react-spinners/FadeLoader";
+import { Layout } from "../Layout/Layout";
 
 const override = css`
   display: block;
@@ -9,7 +10,11 @@ const override = css`
 `;
 
 const Loader = () => {
-  return <FadeLoader css={override} size={150} />;
+  return (
+    <Layout>
+      <FadeLoader css={override} size={150} />;
+    </Layout>
+  );
 };
 
 export default Loader;

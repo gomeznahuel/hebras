@@ -10,7 +10,7 @@ export const CountContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   min-height: 3em;
-  margin-bottom: .4em;
+  margin-bottom: 0.4em;
 
   button {
     &:disabled {
@@ -44,4 +44,17 @@ export const AddToCartButton = styled.button`
     cursor: not-allowed;
     opacity: 0.5;
   }
+`;
+
+export const OutOfStock = styled.div`
+  background-color: red;
+  color: white;
+  font-size: 1.2em;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: .8em;
+  text-align: center;
+  width: 100%;
+  border-radius: 0.5em;
+  margin-bottom: .4em;
 `;

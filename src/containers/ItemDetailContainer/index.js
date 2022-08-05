@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
 import Loader from "../../helpers/Loader";
 import { getProduct } from "../../services/GetProduct";
-import { ProductNotFound } from "../../components/NotFound/ProductNotFound";
 import { notifyError } from "../../helpers/Notify";
-import ItemDetail from "../../components/ItemDetail";
+import {ItemDetail, ProductNotFound } from '../../components';
+import { Layout } from "../../Layout/Layout";
 
 // useParams hook
 import { useParams } from "react-router-dom";
-import { Layout } from "../../Layout/Layout";
 
 const ItemDetailContainer = () => {
   const [product, setProduct] = useState({});
@@ -19,26 +18,17 @@ const ItemDetailContainer = () => {
   useEffect(() => {
     getProduct(productId)
       .then((product) => {
-        if (product) {
-          setProduct(product);
-          setIsProductAvailable(true);
-        } else {
-          setIsProductAvailable(false);
-        }
+        product
+          ? setProduct(product) || setIsProductAvailable(true)
+          : setIsProductAvailable(false);
         setIsLoading(false);
       })
-      .catch((error) => {
-        notifyError(error.message);
-      });
+      .catch((error) => notifyError(error.message));
   }, [productId]);
 
   return (
     <Layout>
-      {isLoading ? <Loader /> : (
-        <>
-          {isProductAvailable ? <ItemDetail product={product} /> : <ProductNotFound />}
-        </>
-      )}
+      {isLoading ? <Loader /> : <> { isProductAvailable ? <ItemDetail product={product} /> : <ProductNotFound text="Producto no encontrado" />} </> }
     </Layout>
   );
 };

@@ -1,15 +1,13 @@
-import { CartContext } from "../../context/cart/CartContext";
 import { useContext, useEffect, useState } from "react";
+import { GenerateOrder, SaveOrder} from "../../utils";
+import { NavLink } from "react-router-dom";
+import { Title, Order, BackToShop } from "./style";
+import { CartContext } from "../../context/cart/CartContext";
 import { Layout } from "../../Layout/Layout";
 import { Form } from "../../components/Form";
-import GeneratedOrder from "../../utils/GenerateOrder";
-import Loader from "../../helpers/Loader";
-import SaveOrder from "../../utils/SaveOrder";
-import { Title, CopyContainer, Order, OrderID, BackToShop } from "./style";
-import { CopyToClipboard } from "react-copy-to-clipboard";
 import Button from "../../common/Button";
-import { NavLink } from "react-router-dom";
-import { notifySuccess } from "../../helpers/Notify";
+import { Loader } from "../../helpers";
+import { CopyOrder } from "../../components/CopyToClipboard";
 
 export const FormContainer = () => {
   const { cart, clearCart, totalPrice } = useContext(CartContext);
@@ -21,12 +19,13 @@ export const FormContainer = () => {
     surname: "",
     phone: "",
     email: "",
-    // confirmEmail: "",
+    confirmEmail: "",
   });
+
 
   const confirmOrder = async () => {
     setIsLoading(true);
-    const order = GeneratedOrder(buyer, cart, totalPrice());
+    const order = GenerateOrder(buyer, cart, totalPrice());
     SaveOrder(cart, order, setIdGenerated, setIsEmpty);
     clearCart();
   };
@@ -50,26 +49,12 @@ export const FormContainer = () => {
       {(!isLoading && idGenerated === null) || isEmpty ? (
         <Form handleChange={handleChange} buyer={buyer} handleSubmitt={handleSubmitt} confirmOrder={confirmOrder} cart={cart} />
       ) : isLoading && idGenerated === null ? (
-        <Layout><Loader /></Layout>
+        <Loader />
       ) : (
         <Layout>
           <Order>
             <Title>¡Su pedido ha sido generado con éxito!</Title>
-
-            <>
-              {idGenerated && (
-                <CopyContainer>
-                  <OrderID>
-                    {idGenerated}
-                  </OrderID>
-                  <CopyToClipboard text={idGenerated} onCopy={() => notifySuccess("Copiado al portapapeles")}>
-                    <OrderID>
-                      <Button textButton="Copiar al portapapeles" />
-                    </OrderID>
-                  </CopyToClipboard>
-                </CopyContainer>
-              )}
-            </>
+            <CopyOrder toCopy={idGenerated} />
           </Order>
           <BackToShop>
             <NavLink to="/products">
@@ -79,5 +64,4 @@ export const FormContainer = () => {
         </Layout>
       )}
     </>
-  );
-}
+  )};

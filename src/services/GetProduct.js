@@ -1,5 +1,6 @@
 import { doc, getDoc } from "firebase/firestore";
 import { firestoreDb } from "../firebase/config";
+import { notifyError } from "../helpers/Notify";
 
 export const getProduct = async (productId) => {
   try {
@@ -13,6 +14,6 @@ export const getProduct = async (productId) => {
       return null;
     }
   } catch (error) {
-    console.error(error);
+    notifyError(error);
   }
 };

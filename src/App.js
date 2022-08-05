@@ -1,10 +1,8 @@
-import { AppRouter } from "./router";
 import { BrowserRouter } from "react-router-dom";
+import { AppRouter } from "./router";
 import { Providers } from "./helpers/Providers";
-import CartProvider from "./context/cart/CartProvider";
-import NavbarProvider from "./context/navbar/NavbarContext";
-import Header from "./common/Header";
-import Footer from "./common/Footer";
+import { NavbarProvider, CartProvider } from "./context";
+import { Header, Footer } from "./common";
 
 function App() {
   return (

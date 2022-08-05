@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { TableTD, TableTR } from "./style";
 import Image from "../../components/Image";
 import { Currency } from "../../helpers/Currency";

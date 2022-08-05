@@ -1,10 +1,9 @@
 import ReactDOM from "react-dom/client";
-import { GlobalStyle } from "./stylesheet/GlobalStyle";
+import { GlobalStyle, theme } from "./stylesheet";
 import { StrictMode } from "react";
 import { ThemeProvider } from "styled-components";
-import { theme } from "./stylesheet/theme";
-import App from "./App";
 import { ToastContainer } from "react-toastify";
+import App from "./App";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 

@@ -3,8 +3,7 @@ import { Wrapper, Menu, MenuItem, MenuItemCartWrapper, MobileIcon } from "./styl
 import { VscThreeBars, VscClose } from "react-icons/vsc";
 import { menuNavigation } from "../../helpers/Data";
 import { NavLink } from "react-router-dom";
-import CartWidget from "../../components/CartWidget";
-import Logo from "../../components/Logo";
+import { CartWidget, Logo } from "../../components";
 import { NavbarContext } from "../../context/navbar/NavbarContext";
 
 const Navbar = () => {

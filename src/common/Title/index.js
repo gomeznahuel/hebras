@@ -1,7 +1,5 @@
-import React from 'react'
+import { TitleHeading } from "./style";
 
-export const Title = ({fontSize, margin, textTitle}) => {
-  return (
-    <h3 style={{margin, fontSize}}>{textTitle}</h3>
-  )
-}
+export const Title = ({ fontSize, margin, textTitle }) => {
+  return <TitleHeading style={{ margin, fontSize }}>{textTitle}</TitleHeading>;
+};

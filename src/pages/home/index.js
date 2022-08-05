@@ -1,17 +1,15 @@
-import { CarouselContainer } from "../../components/Carousel";
+import { CarouselContainer } from '../../components';
 import { Layout } from "../../Layout/Layout";
 import { useEffect } from "react";
 import { getProducts } from "../../services/GetProducts";
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
-import { CardsContainer, SelectedProductsContainer, Card } from "./style";
-import Loader from "../../helpers/Loader";
-import Image from "../../components/Image";
-import Button from "../../common/Button";
-import { Title } from "../../common/Title";
+import { SectionSelected, CardsContainer, SelectedProductsContainer } from "./style";
+import { Title } from "../../common";
+import { SelectedProducts } from "../../models/SelectedProducts";
+import { Loader, notifyError } from "../../helpers";
 
 const HomePage = () => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [selected, setSelected] = useState([]);
 
   useEffect(() => {
@@ -23,7 +21,7 @@ const HomePage = () => {
         setLoading(false);
       });
     } catch (error) {
-      console.error(error);
+      notifyError(error);
     }
   }, [setSelected]);
 
@@ -38,15 +36,9 @@ const HomePage = () => {
         <Title textTitle="Selected products!" />
         <CardsContainer>
           {selected.map(({ id, name, title, image, selected}) => (
-            <div key={id}>
-              {selected ? (
-                <Card>
-                  <Title textTitle={title.toUpperCase()} margin={".4em 0 .2em 0"} fontSize={"2rem"} />
-                  <Image src={image} alt={name} maxWidth="55%" />
-                  <NavLink to={`/item/${id}`}><Button textButton="View product" /></NavLink>
-                </Card>
-              ) : null}
-            </div>
+            <SectionSelected key={id}>
+              {selected && <SelectedProducts id={id} name={name} title={title} image={image} /> }
+            </SectionSelected>
           ))}
         </CardsContainer>
         </SelectedProductsContainer>

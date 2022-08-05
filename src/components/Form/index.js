@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup'
 import { formSchema } from '../../utils/validations'
 import Button from '../../common/Button';
+import { ProductNotFound } from "../NotFound";
 
 export const Form = ({ handleChange, handleSubmitt, buyer, cart }) => {
   const formOptions = { resolver: yupResolver(formSchema) };
@@ -14,7 +15,7 @@ export const Form = ({ handleChange, handleSubmitt, buyer, cart }) => {
   return (
     <FormContainer>
       {cart.length === 0 ? (
-        <p>No hay productos en el carrito, para poder realizar una compra debe agregar al menos un producto.</p>
+        <ProductNotFound text="No hay productos en el carrito." />
       ) : (
       <FormWrapper onSubmit={handleSubmit(handleSubmitt)}>
         <input placeholder="Nombre" name="name" type="text" value={name} {...register("name", { minLength: 3, maxLength: 20, required: true })} onChange={handleChange} />

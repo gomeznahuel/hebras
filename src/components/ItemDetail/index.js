@@ -1,14 +1,14 @@
-import { toast } from "react-toastify";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Wrapper, IDContainer, ItemDetailTitle, ItemDetailSpan } from "./style";
 import { Currency } from "../../helpers/Currency";
+import { Wrapper, IDContainer, ItemDetailTitle, ItemDetailSpan } from "./style";
 import Image from '../Image';
 
 import Button from "../../common/Button";
 import ItemCount from "../ItemCount";
 
 import { CartContext } from "../../context/cart/CartContext";
+import { notifySuccess } from "../../helpers/Notify";
 
 const ItemDetail = ({ product }) => {
   const [showCount, setShowCount] = useState(true);
@@ -20,20 +20,11 @@ const ItemDetail = ({ product }) => {
 
   // This function is called when the user clicks the "Add to cart" button.
   const onAdd = (qty) => {
-    toast.success(`Added ${qty} "${title}" to cart!`, {
-      position: "bottom-left",
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeButton: false,
-      toastId: customId,
-    });
+    notifySuccess(`Added ${qty} "${title}" to cart!`);
     setShowCount(false);
     setQuantity(qty);
     addItem(product, qty);
   };
-
-  // Custom ID for Toast
-  const customId = "custom-id-yes";
 
   // useNavigate is used to navigate to the cart page.
   const navigate = useNavigate();

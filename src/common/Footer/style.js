@@ -11,4 +11,13 @@ export const FooterContainer = styled.footer`
   font-weight: bold;
   background-color: ${(props) => props.theme.colors.darkGray};
   color: ${(props) => props.theme.colors.darkGolden};
+
+  a {
+    color: ${(props) => props.theme.colors.darkGolden};
+    transition: 0.5s all ease;
+  }
+
+  a:hover {
+    color: ${(props) => props.theme.colors.textHover};
+  }
 `;
